@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1bd2e9446b14ad18adaddbb623eb7a8" Name="Diagram1">
+        <EntityTypeShape EntityType="MusicManModel.BillingDetail" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicManModel.Note" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicManModel.Person" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicManModel.Relationship" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicManModel.Schedule" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicManModel.User" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MusicManModel.FK_PersonBillingDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicManModel.FK_PersonNote" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicManModel.FK_ChildRelationship" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicManModel.FK_ParentRelationship" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicManModel.FK_PersonSchedule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
