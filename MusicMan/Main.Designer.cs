@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange6 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange7 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange8 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange9 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange10 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange11 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange12 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange13 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange14 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange15 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
@@ -53,6 +53,7 @@
             this.btnEditStudent = new System.Windows.Forms.Button();
             this.grdStudents = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnMarkPaid = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -99,27 +100,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            calendarHighlightRange6.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange6.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange6.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange7.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange7.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange7.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange8.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange8.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange8.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange9.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange9.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange9.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange10.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange10.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange10.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange11.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange11.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange11.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange12.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange12.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange12.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange13.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange13.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange13.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange14.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange14.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange14.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange15.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange15.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange15.StartTime = System.TimeSpan.Parse("08:00:00");
             this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
-        calendarHighlightRange6,
-        calendarHighlightRange7,
-        calendarHighlightRange8,
-        calendarHighlightRange9,
-        calendarHighlightRange10};
+        calendarHighlightRange11,
+        calendarHighlightRange12,
+        calendarHighlightRange13,
+        calendarHighlightRange14,
+        calendarHighlightRange15};
             this.calendar1.Location = new System.Drawing.Point(715, 14);
             this.calendar1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.calendar1.Name = "calendar1";
@@ -155,6 +156,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnMarkPaid);
             this.tabPage2.Controls.Add(this.btnEditInvoice);
             this.tabPage2.Controls.Add(this.btnInvoice);
             this.tabPage2.Controls.Add(this.dtTo);
@@ -173,9 +175,9 @@
             // 
             // btnEditInvoice
             // 
-            this.btnEditInvoice.Location = new System.Drawing.Point(1725, 256);
+            this.btnEditInvoice.Location = new System.Drawing.Point(1737, 260);
             this.btnEditInvoice.Name = "btnEditInvoice";
-            this.btnEditInvoice.Size = new System.Drawing.Size(379, 61);
+            this.btnEditInvoice.Size = new System.Drawing.Size(367, 71);
             this.btnEditInvoice.TabIndex = 6;
             this.btnEditInvoice.Text = "Edit Invoice";
             this.btnEditInvoice.UseVisualStyleBackColor = true;
@@ -183,9 +185,9 @@
             // 
             // btnInvoice
             // 
-            this.btnInvoice.Location = new System.Drawing.Point(1725, 150);
+            this.btnInvoice.Location = new System.Drawing.Point(1737, 150);
             this.btnInvoice.Name = "btnInvoice";
-            this.btnInvoice.Size = new System.Drawing.Size(379, 61);
+            this.btnInvoice.Size = new System.Drawing.Size(367, 71);
             this.btnInvoice.TabIndex = 5;
             this.btnInvoice.Text = "Create Invoices";
             this.btnInvoice.UseVisualStyleBackColor = true;
@@ -218,6 +220,7 @@
             this.grdBilling.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.grdBilling.MultiSelect = false;
             this.grdBilling.Name = "grdBilling";
+            this.grdBilling.RowHeadersVisible = false;
             this.grdBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdBilling.Size = new System.Drawing.Size(1088, 982);
             this.grdBilling.TabIndex = 1;
@@ -283,6 +286,7 @@
             this.grdParents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grdParents.MultiSelect = false;
             this.grdParents.Name = "grdParents";
+            this.grdParents.RowHeadersVisible = false;
             this.grdParents.RowTemplate.Height = 40;
             this.grdParents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdParents.Size = new System.Drawing.Size(2988, 1087);
@@ -338,6 +342,7 @@
             this.grdStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grdStudents.MultiSelect = false;
             this.grdStudents.Name = "grdStudents";
+            this.grdStudents.RowHeadersVisible = false;
             this.grdStudents.RowTemplate.Height = 40;
             this.grdStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdStudents.Size = new System.Drawing.Size(2983, 1085);
@@ -354,6 +359,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Config";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnMarkPaid
+            // 
+            this.btnMarkPaid.Location = new System.Drawing.Point(1737, 370);
+            this.btnMarkPaid.Name = "btnMarkPaid";
+            this.btnMarkPaid.Size = new System.Drawing.Size(367, 71);
+            this.btnMarkPaid.TabIndex = 7;
+            this.btnMarkPaid.Text = "Mark Paid";
+            this.btnMarkPaid.UseVisualStyleBackColor = true;
+            this.btnMarkPaid.Click += new System.EventHandler(this.btnMarkPaid_Click);
             // 
             // Main
             // 
@@ -400,5 +415,6 @@
         private System.Windows.Forms.DataGridView grdBilling;
         private System.Windows.Forms.ListBox lstBillParents;
         private System.Windows.Forms.Button btnEditInvoice;
+        private System.Windows.Forms.Button btnMarkPaid;
     }
 }

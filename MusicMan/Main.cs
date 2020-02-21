@@ -89,9 +89,13 @@ namespace MusicMan
 
         private void LoadBillingGrid()
         {
-            var selectedPerson = lstBillParents.SelectedItem as Person;
+            var selected = 0;
+            if (grdBilling.RowCount > 0)
+            {
+                selected = grdBilling.SelectedCells[0].RowIndex;
+            }
 
-            if (selectedPerson == null)
+            if (!(lstBillParents.SelectedItem is Person selectedPerson))
             {
                 return;
             }
@@ -109,6 +113,13 @@ namespace MusicMan
             grdBilling.Columns[2].HeaderCell.Value = "Amount";
             grdBilling.Columns[3].HeaderCell.Value = "Invoiced";
             grdBilling.Columns[4].HeaderCell.Value = "Paid";
+
+            if (selected != 0)
+            {
+                grdBilling.Rows[selected].Selected = true;
+
+            }
+            
         }
 
         private object GetParentGridList()
@@ -255,6 +266,25 @@ namespace MusicMan
         private void grdBilling_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnEditInvoice_Click(null,null);
+        }
+
+        private void btnMarkPaid_Click(object sender, EventArgs e)
+        {
+            var selectedRowIndex = grdBilling.SelectedCells[0].RowIndex;
+
+            var selectedRow = grdBilling.Rows[selectedRowIndex];
+            var billingId = Convert.ToInt16(selectedRow.Cells["BillingDetailID"].Value);
+
+            using (var db = new MusicManEntities())
+            {
+                var billingDetail = db.BillingDetails.FirstOrDefault(x => x.BillingDetailID == billingId);
+                if (billingDetail != null)
+                {
+                    billingDetail.IsPaid = true;
+                    db.SaveChanges();
+                }
+            }
+            LoadBillingGrid();
         }
     }
 }
