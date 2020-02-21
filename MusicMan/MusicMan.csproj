@@ -86,6 +86,13 @@
     <Compile Include="BillingDetail.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BillingDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillingDetailForm.Designer.cs">
+      <DependentUpon>BillingDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillingService.cs" />
     <Compile Include="frmPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +144,9 @@
     <Compile Include="User.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillingDetailForm.resx">
+      <DependentUpon>BillingDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPerson.resx">
       <DependentUpon>frmPerson.cs</DependentUpon>
     </EmbeddedResource>

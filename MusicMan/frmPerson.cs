@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MusicMan
 {
     public partial class FrmPerson : Form
     {
-        private int _personKey;
-        private bool _isParent;
-        private bool _isNew;
+        private readonly int _personKey;
+        private readonly bool _isParent;
+        private readonly bool _isNew;
 
         public FrmPerson(int personKey, bool isParent, bool isNew)
         {
@@ -24,13 +18,24 @@ namespace MusicMan
 
             InitializeComponent();
             SetValues();
+            SetVisibility();
+        }
+
+        private void SetVisibility()
+        {
+            chkPaypal.Visible = _isParent;
+            chkVenmo.Visible = _isParent;
+            lblInvoiceDay.Visible = _isParent;
+            numInvoiceDay.Visible = _isParent;
+            lblRate.Visible = !_isParent;
+            numRate.Visible = !_isParent;
         }
 
         private void SetValues()
         {
             if (!_isNew)
             {
-                using (MusicManEntities db = new MusicManEntities())
+                using (var db = new MusicManEntities())
                 {
                     var person = db.People.FirstOrDefault(x => x.PersonID == _personKey);
                     if (person != null)
@@ -42,20 +47,11 @@ namespace MusicMan
                         chkActive.Checked = (bool)person.IsActive;
                         chkPaypal.Checked = (bool)person.IsPaypal;
                         chkVenmo.Checked = (bool)person.IsVenmo;
+                        numRate.Value = (decimal)person.Rate;
+                        numInvoiceDay.Value = (decimal)person.InvoiceDay;
                     }
                 }
             }
-            
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkActive_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -68,11 +64,12 @@ namespace MusicMan
             {
                 SaveUpdate();
             }
+            Close();
         }
 
         private void SaveNew()
         {
-            using (MusicManEntities db = new MusicManEntities())
+            using (var db = new MusicManEntities())
             {
                 var person = new Person();
                 person.FirstName = txtFirstName.Text;
@@ -80,6 +77,7 @@ namespace MusicMan
                 person.Email = txtEmail.Text;
                 person.Phone = txtPhone.Text;
                 person.InvoiceDay = (int?)numInvoiceDay.Value;
+                person.Rate = (int?)numRate.Value;
                 person.IsActive = chkActive.Checked;
                 person.IsVenmo = chkVenmo.Checked;
                 person.IsPaypal = chkPaypal.Checked;
@@ -92,7 +90,7 @@ namespace MusicMan
 
         private void SaveUpdate()
         {
-            using (MusicManEntities db = new MusicManEntities())
+            using (var db = new MusicManEntities())
             {
                 var person = db.People.FirstOrDefault(x => x.PersonID == _personKey);
 
@@ -102,6 +100,7 @@ namespace MusicMan
                 person.Email = txtEmail.Text;
                 person.Phone = txtPhone.Text;
                 person.InvoiceDay = (int?) numInvoiceDay.Value;
+                person.Rate = (int?) numRate.Value;
                 person.IsActive = chkActive.Checked;
                 person.IsVenmo = chkVenmo.Checked;
                 person.IsPaypal = chkPaypal.Checked;
