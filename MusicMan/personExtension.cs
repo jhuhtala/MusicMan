@@ -33,8 +33,8 @@ namespace MusicMan
         {
             using (var db = new MusicManEntities())
             {
-                var blah = db.People.Where(x => x.IsParent == true);
-                return blah.ToList();
+                var parents = db.People.Where(x => x.IsParent == true);
+                return parents.ToList();
             }
         }
     }

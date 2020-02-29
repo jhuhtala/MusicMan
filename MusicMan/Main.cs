@@ -70,6 +70,7 @@ namespace MusicMan
             grdParents.Columns[1].HeaderCell.Value = "Last";
             grdParents.Columns[2].HeaderCell.Value = "First";
             grdParents.Columns[3].HeaderCell.Value = "Phone";
+            grdParents.Columns[3].DefaultCellStyle.Format = "(###)###-####";
             grdParents.Columns[4].HeaderCell.Value = "Email";
             grdParents.Columns[5].HeaderCell.Value = "Venmo";
             grdParents.Columns[6].HeaderCell.Value = "PayPal";
