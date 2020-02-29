@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange11 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange12 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange13 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange14 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange15 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnMarkPaid = new System.Windows.Forms.Button();
             this.btnEditInvoice = new System.Windows.Forms.Button();
             this.btnInvoice = new System.Windows.Forms.Button();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
@@ -53,7 +54,6 @@
             this.btnEditStudent = new System.Windows.Forms.Button();
             this.grdStudents = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnMarkPaid = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -100,27 +100,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            calendarHighlightRange11.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange11.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange11.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange12.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange12.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange12.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange13.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange13.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange13.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange14.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange14.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange14.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange15.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange15.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange15.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
             this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
-        calendarHighlightRange11,
-        calendarHighlightRange12,
-        calendarHighlightRange13,
-        calendarHighlightRange14,
-        calendarHighlightRange15};
+        calendarHighlightRange1,
+        calendarHighlightRange2,
+        calendarHighlightRange3,
+        calendarHighlightRange4,
+        calendarHighlightRange5};
             this.calendar1.Location = new System.Drawing.Point(715, 14);
             this.calendar1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.calendar1.Name = "calendar1";
@@ -173,13 +173,23 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // btnMarkPaid
+            // 
+            this.btnMarkPaid.Location = new System.Drawing.Point(1737, 370);
+            this.btnMarkPaid.Name = "btnMarkPaid";
+            this.btnMarkPaid.Size = new System.Drawing.Size(367, 71);
+            this.btnMarkPaid.TabIndex = 7;
+            this.btnMarkPaid.Text = "Mark Paid";
+            this.btnMarkPaid.UseVisualStyleBackColor = true;
+            this.btnMarkPaid.Click += new System.EventHandler(this.btnMarkPaid_Click);
+            // 
             // btnEditInvoice
             // 
             this.btnEditInvoice.Location = new System.Drawing.Point(1737, 260);
             this.btnEditInvoice.Name = "btnEditInvoice";
             this.btnEditInvoice.Size = new System.Drawing.Size(367, 71);
             this.btnEditInvoice.TabIndex = 6;
-            this.btnEditInvoice.Text = "Edit Invoice";
+            this.btnEditInvoice.Text = "Adjust Amount";
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
@@ -359,16 +369,6 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Config";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // btnMarkPaid
-            // 
-            this.btnMarkPaid.Location = new System.Drawing.Point(1737, 370);
-            this.btnMarkPaid.Name = "btnMarkPaid";
-            this.btnMarkPaid.Size = new System.Drawing.Size(367, 71);
-            this.btnMarkPaid.TabIndex = 7;
-            this.btnMarkPaid.Text = "Mark Paid";
-            this.btnMarkPaid.UseVisualStyleBackColor = true;
-            this.btnMarkPaid.Click += new System.EventHandler(this.btnMarkPaid_Click);
             // 
             // Main
             // 

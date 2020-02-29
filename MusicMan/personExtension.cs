@@ -1,20 +1,40 @@
-﻿namespace MusicMan
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+
+namespace MusicMan
 {
     public partial class Person
     {
-        public string FullName
+        public string FullName => LastName + ", " + FirstName;
+
+        public string FirstLast => FirstName + " " + LastName;
+        
+        public string PersonList => LastName + ", " + FirstName +" " +Phone + " " + Email + (IsPaypal.HasValue && IsPaypal.Value ? " PayPal" : " Venmo");
+
+        public Person GetParent(Person person)
         {
-            get
+            using (var db = new MusicManEntities())
             {
-                return LastName + ", " + FirstName;
+                var relationship = db.Relationships
+                    .FirstOrDefault(s => s.ChildID == person.PersonID);
+
+                if (relationship != null)
+                {
+                    var parent = db.People.Find(relationship.ParentID);
+                    return parent;
+                }
+
+                return null;
             }
         }
 
-        public string PersonList
+        public static List<Person> GetParents()
         {
-            get
+            using (var db = new MusicManEntities())
             {
-                return LastName + ", " + FirstName +" " +Phone + " " + Email + (IsPaypal.HasValue && IsPaypal.Value ? " PayPal" : " Venmo");
+                var blah = db.People.Where(x => x.IsParent == true);
+                return blah.ToList();
             }
         }
     }

@@ -53,6 +53,12 @@ namespace MusicMan
 
         private void LoadParentGrid()
         {
+            var selected = 0;
+            if (grdParents.RowCount > 0)
+            {
+                selected = grdParents.SelectedCells[0].RowIndex;
+            }
+
             var parentList = GetParentGridList();
 
             grdParents.DataSource = parentList;
@@ -67,10 +73,21 @@ namespace MusicMan
             grdParents.Columns[4].HeaderCell.Value = "Email";
             grdParents.Columns[5].HeaderCell.Value = "Venmo";
             grdParents.Columns[6].HeaderCell.Value = "PayPal";
+
+            if (selected != 0)
+            {
+                grdParents.Rows[selected].Selected = true;
+            }
         }
 
         private void LoadStudentGrid()
         {
+            var selected = 0;
+            if (grdStudents.RowCount > 0)
+            {
+                selected = grdStudents.SelectedCells[0].RowIndex;
+            }
+
             var studentList = GetStudentGridList();
 
             grdStudents.DataSource = studentList;
@@ -85,6 +102,11 @@ namespace MusicMan
             grdStudents.Columns[4].HeaderCell.Value = "Email";
             grdStudents.Columns[5].HeaderCell.Value = "Rate";
             grdStudents.Columns[6].HeaderCell.Value = "Active";
+
+            if (selected != 0)
+            {
+                grdStudents.Rows[selected].Selected = true;
+            }
         }
 
         private void LoadBillingGrid()
@@ -100,7 +122,7 @@ namespace MusicMan
                 return;
             }
 
-            var billingList = GetBillingGridList(selectedPerson.PersonID, dtFrom.Value, dtTo.Value);
+            var billingList = BillingService.GetBillingEntryList(selectedPerson.PersonID, dtFrom.Value, dtTo.Value);
 
             grdBilling.DataSource = billingList;
             if (grdBilling.Columns["BillingDetailID"] != null)
@@ -117,7 +139,6 @@ namespace MusicMan
             if (selected != 0)
             {
                 grdBilling.Rows[selected].Selected = true;
-
             }
             
         }
@@ -136,20 +157,7 @@ namespace MusicMan
                 .Select(x => new { x.PersonID, x.LastName, x.FirstName, x.Phone, x.Email, x.Rate, x.IsActive }).ToList();
         }
 
-        private object GetBillingGridList(int personID, DateTime start, DateTime end)
-        {
-            using (var ctx = new MusicManEntities())
-            {
-                var anonymousObjResult = from p in ctx.People
-                    join b in ctx.BillingDetails on p.PersonID equals b.PersonID
-                    orderby b.BilledDate
-                    where p.PersonID == personID && b.BilledDate >= start && b.BilledDate <= end
-                    select new {b.BillingDetailID,b.BilledDate,b.Amount,b.IsInvoiced,b.IsPaid,};
-
-                return anonymousObjResult.ToList();
-            }
-
-        }
+        
 
         private void monthView1_SelectionChanged(object sender, EventArgs e)
         {

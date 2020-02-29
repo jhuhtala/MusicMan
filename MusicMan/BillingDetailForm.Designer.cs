@@ -59,11 +59,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(136, 174);
+            this.label3.Location = new System.Drawing.Point(113, 162);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 32);
+            this.label3.Size = new System.Drawing.Size(121, 32);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Total:";
+            this.label3.Text = "Amount:";
             // 
             // txtParentName
             // 
@@ -75,7 +75,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(248, 168);
+            this.txtTotal.Location = new System.Drawing.Point(248, 162);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 38);
             this.txtTotal.TabIndex = 5;

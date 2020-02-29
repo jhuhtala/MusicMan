@@ -27,12 +27,12 @@ namespace MusicMan
                     var total = 0;
                     using (var db = new MusicManEntities())
                     {
-                        var anonymousObjResult = from r in db.Relationships
+                        var students = from r in db.Relationships
                             join p in db.People on r.ChildID equals p.PersonID
                             where r.ParentID == parentId 
                             select new { p.PersonID, p.Rate};
 
-                        var studentList = anonymousObjResult.ToList();
+                        var studentList = students.ToList();
 
                         foreach (var student in studentList)
                         {
@@ -63,6 +63,20 @@ namespace MusicMan
 
                 db.BillingDetails.Add(bill);
                 db.SaveChanges();
+            }
+        }
+
+        public static object GetBillingEntryList(int personID, DateTime start, DateTime end)
+        {
+            using (var db = new MusicManEntities())
+            {
+                var billingEntries = from p in db.People
+                    join b in db.BillingDetails on p.PersonID equals b.PersonID
+                    orderby b.BilledDate
+                    where p.PersonID == personID && b.BilledDate >= start && b.BilledDate <= end
+                    select new { b.BillingDetailID, b.BilledDate, b.Amount, b.IsInvoiced, b.IsPaid, };
+
+                return billingEntries.ToList();
             }
         }
     }
