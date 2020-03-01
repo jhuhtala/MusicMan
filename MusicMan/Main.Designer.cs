@@ -171,7 +171,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Billing";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // btnMarkPaid
             // 
@@ -211,7 +210,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(297, 38);
             this.dtTo.TabIndex = 4;
-            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtToOrFrom_ValueChanged);
             // 
             // dtFrom
             // 
@@ -221,7 +220,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(279, 38);
             this.dtFrom.TabIndex = 2;
-            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtToOrFrom_ValueChanged);
             // 
             // grdBilling
             // 

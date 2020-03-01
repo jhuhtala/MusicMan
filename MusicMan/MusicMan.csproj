@@ -93,11 +93,12 @@
       <DependentUpon>BillingDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BillingService.cs" />
-    <Compile Include="frmPerson.cs">
+    <Compile Include="DaysOfWeekEnum.cs" />
+    <Compile Include="FrmPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPerson.Designer.cs">
-      <DependentUpon>frmPerson.cs</DependentUpon>
+    <Compile Include="FrmPerson.Designer.cs">
+      <DependentUpon>FrmPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -132,7 +133,7 @@
     <Compile Include="Person.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="personExtension.cs" />
+    <Compile Include="PersonExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relationship.cs">
@@ -141,14 +142,15 @@
     <Compile Include="Schedule.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleExtension.cs" />
     <Compile Include="User.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BillingDetailForm.resx">
       <DependentUpon>BillingDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPerson.resx">
-      <DependentUpon>frmPerson.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPerson.resx">
+      <DependentUpon>FrmPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
