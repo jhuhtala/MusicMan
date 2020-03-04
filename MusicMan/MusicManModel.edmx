@@ -213,8 +213,8 @@
           <Property Name="RelationshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ParentID" Type="Int32" />
           <Property Name="ChildID" Type="Int32" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_ChildRelationship" FromRole="Relationship" ToRole="Person" />
-          <NavigationProperty Name="Person1" Relationship="Self.FK_ParentRelationship" FromRole="Relationship" ToRole="Person" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_ChildRelationship" FromRole="Relationship" ToRole="Person" />
+          <NavigationProperty Name="Parent" Relationship="Self.FK_ParentRelationship" FromRole="Relationship" ToRole="Person" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>

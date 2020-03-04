@@ -64,13 +64,13 @@ namespace MusicMan
           if (person.InvoiceDay != null) numInvoiceDay.Value = (decimal) person.InvoiceDay;
 
 
-          cboDayOfWeek.DataSource = Enum.GetNames(typeof(DaysOfWeekEnum.WeekDays));
+          cboDayOfWeek.DataSource = Enum.GetNames(typeof(DayOfWeek));
 
           var dt = DateTime.Now;
           var schedule = Schedule.GetScheduleFromStudentId(person.PersonID);
           if (schedule != null)
           {
-            var dayOfWeek = (DaysOfWeekEnum.WeekDays)schedule.DayOfTheWeek;
+            var dayOfWeek = (DayOfWeek)schedule.DayOfTheWeek;
             cboDayOfWeek.SelectedItem = dayOfWeek.ToString();
             var time = schedule.TimeOfDay;
             dt = (DateTime) (dt.Date + time);

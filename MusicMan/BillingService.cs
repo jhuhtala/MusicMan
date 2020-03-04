@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MusicMan
 {
   public class BillingService
   {
     /// <summary>Creates the invoices for the current month.</summary>
-    public static void CreateInvoices()
+
+  public static void CreateInvoices()
     {
       var date = DateTime.Now;
       var fromDate = new DateTime(date.Year, date.Month, 1);
@@ -28,20 +30,43 @@ namespace MusicMan
           var total = 0;
           using (var db = new MusicManEntities())
           {
-            var students = from r in db.Relationships
+            var studentQuery = from r in db.Relationships
               join p in db.People on r.ChildID equals p.PersonID
+              join s in db.Schedules on p.PersonID equals s.PersonID
               where r.ParentID == parentId
-              select new {p.PersonID, p.Rate};
+              select new {p.PersonID, p.Rate, s.DayOfTheWeek, };
 
-            var studentList = students.ToList();
+            var studentView = studentQuery.ToList();
 
-            foreach (var student in studentList) total += student.Rate ?? 0;
+            foreach (var student in studentView)
+            {
+              var dayOfWeek = (DayOfWeek)student.DayOfTheWeek;
+              var numLessons = CountDays(dayOfWeek, fromDate, toDate);
 
+              total += numLessons * student.Rate.Value;
+            }
             if (total > 0) CreateBillingEntry(parentId, total);
           }
         }
       }
     }
+
+    static int CountDays(DayOfWeek day, DateTime start, DateTime end)
+    {
+      TimeSpan ts = end - start;                       // Total duration
+      int count = (int)Math.Floor(ts.TotalDays / 7);   // Number of whole weeks
+      int remainder = (int)(ts.TotalDays % 7);         // Number of remaining days
+      int sinceLastDay = (int)(end.DayOfWeek - day);   // Number of days since last [day]
+      if (sinceLastDay < 0) sinceLastDay += 7;         // Adjust for negative days since last [day]
+
+      // If the days in excess of an even week are greater than or equal to the number days since the last [day], then count this one, too.
+      if (remainder >= sinceLastDay) count++;
+
+      return count;
+    }
+
+
+
 
     /// <summary>Creates the billing entry.</summary>
     /// <param name="parentId">The parent identifier.</param>
@@ -96,6 +121,40 @@ namespace MusicMan
           db.SaveChanges();
         }
       }
+    }
+
+    public static void SendInvoices()
+    {
+      using (var db = new MusicManEntities())
+      {
+        var unsentInvoices = db.BillingDetails.Where( x => x.IsInvoiced == false);
+        foreach (var unsentInvoice in unsentInvoices)
+        {
+          if (unsentInvoice.Person.InvoiceDay <= DateTime.Today.Day) 
+          {
+            if (unsentInvoice.Person.IsPaypal.HasValue && unsentInvoice.Person.IsPaypal.Value)
+            {
+              SendPaypalInvoice(unsentInvoice.Amount, unsentInvoice.Person.Email);
+            }
+            else if (unsentInvoice.Person.IsVenmo.HasValue && unsentInvoice.Person.IsVenmo.Value)
+            {
+              SendVenmoInvoice(unsentInvoice.Amount, unsentInvoice.Person.Email);
+            }
+
+          }
+        }
+      }
+
+    }
+
+    private static void SendVenmoInvoice(decimal? unsentInvoiceAmount, string personEmail)
+    {
+      throw new NotImplementedException();
+    }
+
+    private static void SendPaypalInvoice(decimal? unsentInvoiceAmount, string personEmail)
+    {
+      throw new NotImplementedException();
     }
   }
 }

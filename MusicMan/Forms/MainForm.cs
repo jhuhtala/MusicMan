@@ -17,8 +17,6 @@ namespace MusicMan
 
     private void Main_Load(object sender, EventArgs e)
     {
-      //lstBillParents.SelectedIndex = 1;
-
       dtFrom.Value = DateTime.Today.AddDays(-90);
       LoadBillParentsList();
       LoadParentGrid();
@@ -128,7 +126,9 @@ namespace MusicMan
 
     private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
     {
+
       var span = new TimeSpan(0, 0, 30, 0, 0);
+
       var calendarItem = new CalendarItem(calendar1, DateTime.Now, span,"Test");
 
       //foreach (CalendarItem item in loadedItems)
@@ -140,6 +140,7 @@ namespace MusicMan
       //calendar1.Items.AddRange(loadedItems);
     }
 
+    /// <summary>Handles the Click event of the btnEditParent control.</summary>
     private void btnEditParent_Click(object sender, EventArgs e)
     {
       var selectedRowIndex = grdParents.SelectedCells[0].RowIndex;
@@ -151,6 +152,7 @@ namespace MusicMan
       LoadParentGrid();
     }
 
+    /// <summary>Handles the Click event of the btnNewParent control.</summary>
     private void btnNewParent_Click(object sender, EventArgs e)
     {
       var m = new FrmPerson(0, true, true);
@@ -233,6 +235,11 @@ namespace MusicMan
       BillingService.MarkInvoiceAsPaid(billingId);
 
       LoadBillingGrid();
+    }
+
+    private void btnSendInvoices_Click(object sender, EventArgs e)
+    {
+      BillingService.SendInvoices();
     }
   }
 }

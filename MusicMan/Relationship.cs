@@ -18,7 +18,7 @@ namespace MusicMan
         public Nullable<int> ParentID { get; set; }
         public Nullable<int> ChildID { get; set; }
     
-        public virtual Person Person { get; set; }
-        public virtual Person Person1 { get; set; }
+        public virtual Person Student { get; set; }
+        public virtual Person Parent { get; set; }
     }
 }
