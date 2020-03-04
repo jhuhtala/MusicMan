@@ -86,23 +86,31 @@
     <Compile Include="BillingDetail.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmPerson.cs">
+    <Compile Include="Forms\BillingDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPerson.Designer.cs">
-      <DependentUpon>frmPerson.cs</DependentUpon>
+    <Compile Include="Forms\BillingDetailForm.Designer.cs">
+      <DependentUpon>BillingDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="BillingService.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Forms\PersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Forms\PersonForm.Designer.cs">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MusicManModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -125,7 +133,7 @@
     <Compile Include="Person.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="personExtension.cs" />
+    <Compile Include="PersonExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relationship.cs">
@@ -134,17 +142,21 @@
     <Compile Include="Schedule.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleExtension.cs" />
     <Compile Include="User.cs">
       <DependentUpon>MusicManModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmPerson.resx">
-      <DependentUpon>frmPerson.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BillingDetailForm.resx">
+      <DependentUpon>BillingDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PersonForm.resx">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -187,10 +199,12 @@
       <DependentUpon>MusicManModel.edmx</DependentUpon>
       <LastGenOutput>MusicManModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\MusicMan.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

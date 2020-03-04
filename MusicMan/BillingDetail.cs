@@ -20,6 +20,7 @@ namespace MusicMan
         public Nullable<bool> IsPaid { get; set; }
         public Nullable<System.DateTime> BilledDate { get; set; }
         public Nullable<System.DateTime> PaidDate { get; set; }
+        public Nullable<bool> IsInvoiced { get; set; }
     
         public virtual Person Person { get; set; }
     }
