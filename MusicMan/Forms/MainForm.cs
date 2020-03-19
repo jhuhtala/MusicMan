@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.Calendar;
+using MusicMan.Forms;
 
 namespace MusicMan
 {
@@ -22,7 +23,48 @@ namespace MusicMan
       LoadParentGrid();
       LoadStudentGrid();
       LoadBillingGrid();
+      LoadUserConfig();
 
+    }
+
+    private void LoadUserConfig()
+    {
+
+
+
+      var user = User.GetDefaultUser();
+
+      if (user == null)
+      {
+        var m = new UserCreationForm();
+        m.ShowDialog();
+        user = User.GetDefaultUser();
+      }
+      else
+      {
+        var m = new Login();
+        var result = m.ShowDialog();
+        if (result == DialogResult.OK)
+        {
+          user = m.user;
+        }
+        else
+        {
+          user = null;
+        }
+
+      }
+
+      if (user == null)
+      {
+        Close();
+        return;
+      }
+
+      txtEmail.Text = user.Email;
+      txtBizName.Text = user.CompanyName;
+      txtPayPalEmail.Text = user.PayPalEmail;
+      txtVenmo.Text = user.VenmoUser;
     }
 
     /// <summary>Loads the bill parents list.</summary>
@@ -240,6 +282,12 @@ namespace MusicMan
     private void btnSendInvoices_Click(object sender, EventArgs e)
     {
       BillingService.SendInvoices();
+    }
+
+    private void btnChangePass_Click(object sender, EventArgs e)
+    {
+      var m = new ChangePassForm();
+      m.ShowDialog();
     }
   }
 }

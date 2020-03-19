@@ -42,26 +42,7 @@ namespace MusicMan
       }
     }    
     
-
-    //public static Person GetStudentsFromParentId(int parentId)
-    //{
-    //  using (var db = new MusicManEntities())
-    //  {
-    //    var relationship = db.Relationships
-    //      .ToList(s => s.ParentID == parentId);
-
-    //    if (relationship != null)
-    //    {
-    //      var parent = db.People.Find(relationship.ParentID);
-    //      return parent;
-    //    }
-
-    //    return null;
-    //  }
-    //}
     
-
-
     /// <summary>Gets the person from primary key.</summary>
     /// <param name="personId">The person identifier.</param>
     /// <returns></returns>
