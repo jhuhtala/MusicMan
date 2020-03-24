@@ -65,6 +65,8 @@ namespace MusicMan
       txtBizName.Text = user.CompanyName;
       txtPayPalEmail.Text = user.PayPalEmail;
       txtVenmo.Text = user.VenmoUser;
+      txtTwilioSID.Text = user.TwilioAccountSid;
+      txtTwilioAuthKey.Text = user.TwilioAuthToken;
     }
 
     /// <summary>Loads the bill parents list.</summary>
@@ -293,7 +295,7 @@ namespace MusicMan
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text);
+      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text, txtTwilioSID.Text, txtTwilioAuthKey.Text);
       MessageBox.Show("Changes Saved");
     }
   }

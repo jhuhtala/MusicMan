@@ -20,5 +20,7 @@ namespace MusicMan
         public string CompanyName { get; set; }
         public string PayPalEmail { get; set; }
         public string VenmoUser { get; set; }
+        public string TwilioAccountSid { get; set; }
+        public string TwilioAuthToken { get; set; }
     }
 }

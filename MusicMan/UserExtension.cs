@@ -20,7 +20,7 @@ namespace MusicMan
       }
     }
 
-    public static void UpdateUser(string email, string companyName, string payPal, string venmo)
+    public static void UpdateUser(string email, string companyName, string payPal, string venmo, string twilioSID, string twilioAuthKey)
     {
       using (var db = new MusicManEntities())
       {
@@ -30,6 +30,8 @@ namespace MusicMan
           user.CompanyName = companyName;
           user.PayPalEmail = payPal;
           user.VenmoUser = venmo;
+          user.TwilioAccountSid = twilioSID;
+          user.TwilioAuthToken = twilioAuthKey;
           db.SaveChanges();
         }
       }

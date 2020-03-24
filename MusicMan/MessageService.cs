@@ -8,8 +8,9 @@ namespace MusicMan
   {
     public static void SendMessage(string body)
     {
-      var accountSid = Properties.Settings.Default.TwilioAccountSid;
-      var authToken = Properties.Settings.Default.TwilioAuthToken;
+      var user = User.GetDefaultUser();
+      var accountSid = user.TwilioAccountSid;
+      var authToken = user.TwilioAuthToken;
       var client = new TwilioRestClient(accountSid, authToken);
 
       var message = MessageResource.Create(

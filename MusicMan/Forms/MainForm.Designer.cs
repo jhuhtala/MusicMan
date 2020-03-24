@@ -65,6 +65,10 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.label6 = new System.Windows.Forms.Label();
+      this.txtTwilioSID = new System.Windows.Forms.TextBox();
+      this.txtTwilioAuthKey = new System.Windows.Forms.TextBox();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
@@ -383,6 +387,10 @@
       // 
       // tabPage5
       // 
+      this.tabPage5.Controls.Add(this.txtTwilioAuthKey);
+      this.tabPage5.Controls.Add(this.txtTwilioSID);
+      this.tabPage5.Controls.Add(this.label6);
+      this.tabPage5.Controls.Add(this.label5);
       this.tabPage5.Controls.Add(this.btnSave);
       this.tabPage5.Controls.Add(this.btnChangePass);
       this.tabPage5.Controls.Add(this.txtVenmo);
@@ -404,7 +412,7 @@
       // 
       // btnSave
       // 
-      this.btnSave.Location = new System.Drawing.Point(609, 403);
+      this.btnSave.Location = new System.Drawing.Point(609, 611);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(126, 60);
       this.btnSave.TabIndex = 9;
@@ -414,7 +422,7 @@
       // 
       // btnChangePass
       // 
-      this.btnChangePass.Location = new System.Drawing.Point(318, 403);
+      this.btnChangePass.Location = new System.Drawing.Point(318, 611);
       this.btnChangePass.Name = "btnChangePass";
       this.btnChangePass.Size = new System.Drawing.Size(265, 60);
       this.btnChangePass.TabIndex = 8;
@@ -453,7 +461,7 @@
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(62, 330);
+      this.label4.Location = new System.Drawing.Point(57, 330);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(250, 32);
       this.label4.TabIndex = 3;
@@ -462,7 +470,7 @@
       // label3
       // 
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(119, 251);
+      this.label3.Location = new System.Drawing.Point(114, 251);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(193, 32);
       this.label3.TabIndex = 2;
@@ -471,7 +479,7 @@
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(91, 172);
+      this.label2.Location = new System.Drawing.Point(86, 172);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(221, 32);
       this.label2.TabIndex = 1;
@@ -480,11 +488,43 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(217, 93);
+      this.label1.Location = new System.Drawing.Point(212, 93);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(95, 32);
       this.label1.TabIndex = 0;
       this.label1.Text = "Email:";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(157, 403);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(150, 32);
+      this.label5.TabIndex = 10;
+      this.label5.Text = "Twilio SID:";
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(85, 472);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(219, 32);
+      this.label6.TabIndex = 11;
+      this.label6.Text = "Twilio Auth Key:";
+      // 
+      // txtTwilioSID
+      // 
+      this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
+      this.txtTwilioSID.Name = "txtTwilioSID";
+      this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioSID.TabIndex = 12;
+      // 
+      // txtTwilioAuthKey
+      // 
+      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 469);
+      this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
+      this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioAuthKey.TabIndex = 13;
       // 
       // Main
       // 
@@ -545,5 +585,9 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button btnChangePass;
     private System.Windows.Forms.Button btnSave;
+    private System.Windows.Forms.TextBox txtTwilioAuthKey;
+    private System.Windows.Forms.TextBox txtTwilioSID;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label label5;
   }
 }

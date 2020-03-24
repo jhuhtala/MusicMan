@@ -70,6 +70,8 @@
           <Property Name="CompanyName" Type="varchar" MaxLength="50" />
           <Property Name="PayPalEmail" Type="varchar" MaxLength="50" />
           <Property Name="VenmoUser" Type="varchar" MaxLength="50" />
+          <Property Name="TwilioAccountSid" Type="varchar" MaxLength="50" />
+          <Property Name="TwilioAuthToken" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_ChildRelationship">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
@@ -238,6 +240,8 @@
           <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PayPalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VenmoUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TwilioAccountSid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TwilioAuthToken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_PersonBillingDetail">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
@@ -396,6 +400,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MusicManModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TwilioAuthToken" ColumnName="TwilioAuthToken" />
+                <ScalarProperty Name="TwilioAccountSid" ColumnName="TwilioAccountSid" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
