@@ -22,29 +22,5 @@ namespace MusicMan.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ACf442bab97061e7e3fe08291df3f9250b")]
-        public string TwilioAccountSid {
-            get {
-                return ((string)(this["TwilioAccountSid"]));
-            }
-            set {
-                this["TwilioAccountSid"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1bd488d0be331e4e9fb09c5e574fac33")]
-        public string TwilioAuthToken {
-            get {
-                return ((string)(this["TwilioAuthToken"]));
-            }
-            set {
-                this["TwilioAuthToken"] = value;
-            }
-        }
     }
 }

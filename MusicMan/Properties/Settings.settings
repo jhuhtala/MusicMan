@@ -1,12 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MusicMan.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="TwilioAccountSid" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ACf442bab97061e7e3fe08291df3f9250b</Value>
-    </Setting>
-    <Setting Name="TwilioAuthToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1bd488d0be331e4e9fb09c5e574fac33</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>
