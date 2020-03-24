@@ -25,6 +25,7 @@
           <Property Name="PersonID" Type="int" />
           <Property Name="Date" Type="datetime" />
           <Property Name="Note" Type="varchar(max)" />
+          <Property Name="IsSent" Type="bit" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -184,6 +185,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_PersonNote" FromRole="Note" ToRole="Person" />
+          <Property Name="IsSent" Type="Boolean" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -347,6 +349,7 @@
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="MusicManModel.Note">
               <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
                 <ScalarProperty Name="NoteID" ColumnName="NoteID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

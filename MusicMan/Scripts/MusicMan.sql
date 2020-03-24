@@ -71,6 +71,7 @@ Create Table Note
 	PersonID int,
 	Date DateTime,
 	Note varchar(max),
+    IsSent bit,
 	CONSTRAINT FK_PersonNote FOREIGN KEY (PersonID)
     REFERENCES Person(PersonID)
 )

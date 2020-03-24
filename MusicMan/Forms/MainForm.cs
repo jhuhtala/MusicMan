@@ -34,32 +34,32 @@ namespace MusicMan
 
       var user = User.GetDefaultUser();
 
-      if (user == null)
-      {
-        var m = new UserCreationForm();
-        m.ShowDialog();
-        user = User.GetDefaultUser();
-      }
-      else
-      {
-        var m = new Login();
-        var result = m.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-          user = m.user;
-        }
-        else
-        {
-          user = null;
-        }
+      //if (user == null)
+      //{
+      //  var m = new UserCreationForm();
+      //  m.ShowDialog();
+      //  user = User.GetDefaultUser();
+      //}
+      //else
+      //{
+      //  var m = new Login();
+      //  var result = m.ShowDialog();
+      //  if (result == DialogResult.OK)
+      //  {
+      //    user = m.user;
+      //  }
+      //  else
+      //  {
+      //    user = null;
+      //  }
 
-      }
+      //}
 
-      if (user == null)
-      {
-        Close();
-        return;
-      }
+      //if (user == null)
+      //{
+      //  Close();
+      //  return;
+      //}
 
       txtEmail.Text = user.Email;
       txtBizName.Text = user.CompanyName;
@@ -282,12 +282,19 @@ namespace MusicMan
     private void btnSendInvoices_Click(object sender, EventArgs e)
     {
       BillingService.SendInvoices();
+      MessageBox.Show(@"Invoices Sent");
     }
 
     private void btnChangePass_Click(object sender, EventArgs e)
     {
       var m = new ChangePassForm();
       m.ShowDialog();
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text);
+      MessageBox.Show("Changes Saved");
     }
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using MusicMan.Forms;
 
 
 namespace MusicMan
@@ -251,6 +252,12 @@ namespace MusicMan
 
         _prevDate = dtTime.Value;
       
+    }
+
+    private void btnNotes_Click(object sender, EventArgs e)
+    {
+      var m = new NotesForm(PersonKey);
+      m.ShowDialog();
     }
   }
 }

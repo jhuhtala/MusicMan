@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using Twilio;
+using Twilio.Clients;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace MusicMan
 {
@@ -123,6 +128,8 @@ namespace MusicMan
       }
     }
 
+
+
     public static void SendInvoices()
     {
       using (var db = new MusicManEntities())
@@ -132,29 +139,41 @@ namespace MusicMan
         {
           if (unsentInvoice.Person.InvoiceDay <= DateTime.Today.Day) 
           {
-            if (unsentInvoice.Person.IsPaypal.HasValue && unsentInvoice.Person.IsPaypal.Value)
-            {
-              SendPaypalInvoice(unsentInvoice.Amount, unsentInvoice.Person.Email);
-            }
-            else if (unsentInvoice.Person.IsVenmo.HasValue && unsentInvoice.Person.IsVenmo.Value)
-            {
-              SendVenmoInvoice(unsentInvoice.Amount, unsentInvoice.Person.Email);
-            }
-
+            SendInvoice(unsentInvoice);
           }
+
+          unsentInvoice.IsInvoiced = true;
+          
         }
+        db.SaveChanges();
       }
 
     }
 
-    private static void SendVenmoInvoice(decimal? unsentInvoiceAmount, string personEmail)
+    private static void SendInvoice(BillingDetail invoice)
     {
-      throw new NotImplementedException();
+      var body = BuildBody(invoice);
+      
+      MessageService.SendMessage(body);
     }
 
-    private static void SendPaypalInvoice(decimal? unsentInvoiceAmount, string personEmail)
+    private static string BuildBody(BillingDetail invoice)
     {
-      throw new NotImplementedException();
+      var month = invoice.BilledDate.Value.ToString("MMMM");
+      var user = User.GetDefaultUser();
+
+      var body = new StringBuilder();
+      body.Append("Your invoice for ");
+      body.Append(user.CompanyName);
+      body.Append(" for the month of ");
+      body.Append(month);
+      body.Append(" is due. Your total is $");
+      body.Append(invoice.Amount);
+      body.Append(". You can send a PayPal to ");
+      body.Append(user.PayPalEmail);
+      body.Append(" or Venmo to ");
+      body.Append(user.VenmoUser);
+      return body.ToString();
     }
   }
 }

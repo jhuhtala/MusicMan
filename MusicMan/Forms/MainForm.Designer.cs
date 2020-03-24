@@ -55,6 +55,8 @@
       this.btnEditStudent = new System.Windows.Forms.Button();
       this.grdStudents = new System.Windows.Forms.DataGridView();
       this.tabPage5 = new System.Windows.Forms.TabPage();
+      this.btnSave = new System.Windows.Forms.Button();
+      this.btnChangePass = new System.Windows.Forms.Button();
       this.txtVenmo = new System.Windows.Forms.TextBox();
       this.txtPayPalEmail = new System.Windows.Forms.TextBox();
       this.txtBizName = new System.Windows.Forms.TextBox();
@@ -63,8 +65,6 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
-      this.btnChangePass = new System.Windows.Forms.Button();
-      this.btnSave = new System.Windows.Forms.Button();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
@@ -402,6 +402,26 @@
       this.tabPage5.Text = "Config";
       this.tabPage5.UseVisualStyleBackColor = true;
       // 
+      // btnSave
+      // 
+      this.btnSave.Location = new System.Drawing.Point(609, 403);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(126, 60);
+      this.btnSave.TabIndex = 9;
+      this.btnSave.Text = "Save";
+      this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      // 
+      // btnChangePass
+      // 
+      this.btnChangePass.Location = new System.Drawing.Point(318, 403);
+      this.btnChangePass.Name = "btnChangePass";
+      this.btnChangePass.Size = new System.Drawing.Size(265, 60);
+      this.btnChangePass.TabIndex = 8;
+      this.btnChangePass.Text = "Change Password";
+      this.btnChangePass.UseVisualStyleBackColor = true;
+      this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
+      // 
       // txtVenmo
       // 
       this.txtVenmo.Location = new System.Drawing.Point(318, 327);
@@ -465,25 +485,6 @@
       this.label1.Size = new System.Drawing.Size(95, 32);
       this.label1.TabIndex = 0;
       this.label1.Text = "Email:";
-      // 
-      // btnChangePass
-      // 
-      this.btnChangePass.Location = new System.Drawing.Point(318, 403);
-      this.btnChangePass.Name = "btnChangePass";
-      this.btnChangePass.Size = new System.Drawing.Size(265, 60);
-      this.btnChangePass.TabIndex = 8;
-      this.btnChangePass.Text = "Change Password";
-      this.btnChangePass.UseVisualStyleBackColor = true;
-      this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
-      // 
-      // btnSave
-      // 
-      this.btnSave.Location = new System.Drawing.Point(609, 403);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(126, 60);
-      this.btnSave.TabIndex = 9;
-      this.btnSave.Text = "Save";
-      this.btnSave.UseVisualStyleBackColor = true;
       // 
       // Main
       // 

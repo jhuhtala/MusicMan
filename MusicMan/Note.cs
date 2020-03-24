@@ -18,6 +18,7 @@ namespace MusicMan
         public Nullable<int> PersonID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Note1 { get; set; }
+        public Nullable<bool> IsSent { get; set; }
     
         public virtual Person Person { get; set; }
     }

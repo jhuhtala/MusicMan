@@ -52,6 +52,7 @@
       this.cboParent = new System.Windows.Forms.ComboBox();
       this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
       this.dtTime = new System.Windows.Forms.DateTimePicker();
+      this.btnNotes = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.numInvoiceDay)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numRate)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -288,12 +289,23 @@
       this.dtTime.TabIndex = 25;
       this.dtTime.ValueChanged += new System.EventHandler(this.dtTime_ValueChanged);
       // 
+      // btnNotes
+      // 
+      this.btnNotes.Location = new System.Drawing.Point(840, 364);
+      this.btnNotes.Name = "btnNotes";
+      this.btnNotes.Size = new System.Drawing.Size(195, 61);
+      this.btnNotes.TabIndex = 26;
+      this.btnNotes.Text = "View Notes";
+      this.btnNotes.UseVisualStyleBackColor = true;
+      this.btnNotes.Click += new System.EventHandler(this.btnNotes_Click);
+      // 
       // FrmPerson
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(1128, 611);
+      this.Controls.Add(this.btnNotes);
       this.Controls.Add(this.dtTime);
       this.Controls.Add(this.cboParent);
       this.Controls.Add(this.label5);
@@ -356,5 +368,6 @@
         private System.Windows.Forms.ComboBox cboParent;
         private System.Windows.Forms.ErrorProvider errProvider;
     private System.Windows.Forms.DateTimePicker dtTime;
+    private System.Windows.Forms.Button btnNotes;
   }
 }

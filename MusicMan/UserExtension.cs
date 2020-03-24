@@ -1,14 +1,9 @@
-﻿using System;
-using System.Configuration;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Linq;
 
 namespace MusicMan
 {
   public partial class User
   {
-
-
     public static User GetDefaultUser()
     {
       using (var db = new MusicManEntities())
@@ -22,6 +17,21 @@ namespace MusicMan
       using (var db = new MusicManEntities())
       {
         return db.Users.FirstOrDefault(x => x.Email == email);
+      }
+    }
+
+    public static void UpdateUser(string email, string companyName, string payPal, string venmo)
+    {
+      using (var db = new MusicManEntities())
+      {
+        var user = db.Users.FirstOrDefault(x => x.Email == email);
+        if (user != null)
+        {
+          user.CompanyName = companyName;
+          user.PayPalEmail = payPal;
+          user.VenmoUser = venmo;
+          db.SaveChanges();
+        }
       }
     }
 
@@ -49,14 +59,11 @@ namespace MusicMan
 
     public void UpdateUser(string password)
     {
-
       using (var db = new MusicManEntities())
       {
         PasswordHash = SecurePasswordHasher.Hash(password);
         db.SaveChanges();
       }
     }
-
-
   }
 }
