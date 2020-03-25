@@ -43,6 +43,9 @@ namespace MusicMan
       numRate.Visible = !IsParent;
       lblParent.Visible = !IsParent;
       cboParent.Visible = !IsParent;
+      lblLessonDay.Visible = !IsParent;
+      cboDayOfWeek.Visible = !IsParent;
+      dtTime.Visible = !IsParent;
     }
 
     /// <summary>Sets the initial form values.</summary>
@@ -91,12 +94,6 @@ namespace MusicMan
 
           _prevDate = dtTime.Value;
           
-          
-
-
-
-          
-
           LoadParentName(person);
         }
         

@@ -32,6 +32,7 @@
       this.cmdNew = new System.Windows.Forms.Button();
       this.cmdEdit = new System.Windows.Forms.Button();
       this.cmdDelete = new System.Windows.Forms.Button();
+      this.btnSendNotes = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.grdNotes)).BeginInit();
       this.SuspendLayout();
       // 
@@ -79,11 +80,22 @@
       this.cmdDelete.UseVisualStyleBackColor = true;
       this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
       // 
+      // btnSendNotes
+      // 
+      this.btnSendNotes.Location = new System.Drawing.Point(589, 632);
+      this.btnSendNotes.Name = "btnSendNotes";
+      this.btnSendNotes.Size = new System.Drawing.Size(198, 50);
+      this.btnSendNotes.TabIndex = 4;
+      this.btnSendNotes.Text = "Send Notes";
+      this.btnSendNotes.UseVisualStyleBackColor = true;
+      this.btnSendNotes.Click += new System.EventHandler(this.btnSendNotes_Click);
+      // 
       // NotesForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1430, 713);
+      this.Controls.Add(this.btnSendNotes);
       this.Controls.Add(this.cmdDelete);
       this.Controls.Add(this.cmdEdit);
       this.Controls.Add(this.cmdNew);
@@ -94,7 +106,7 @@
       this.Name = "NotesForm";
       this.ShowIcon = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-      this.Text = "NotesForm";
+      this.Text = "Notes";
       ((System.ComponentModel.ISupportInitialize)(this.grdNotes)).EndInit();
       this.ResumeLayout(false);
 
@@ -106,5 +118,6 @@
     private System.Windows.Forms.Button cmdNew;
     private System.Windows.Forms.Button cmdEdit;
     private System.Windows.Forms.Button cmdDelete;
+    private System.Windows.Forms.Button btnSendNotes;
   }
 }

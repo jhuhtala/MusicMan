@@ -6,7 +6,7 @@ namespace MusicMan
 {
   public class MessageService
   {
-    public static void SendMessage(string body)
+    public static void SendMessage(string body, string toPhone)
     {
       var user = User.GetDefaultUser();
       var accountSid = user.TwilioAccountSid;
@@ -14,7 +14,7 @@ namespace MusicMan
       var client = new TwilioRestClient(accountSid, authToken);
 
       var message = MessageResource.Create(
-        to: new PhoneNumber("+19162039457"),
+        to: new PhoneNumber(toPhone),
         from: new PhoneNumber("+12058435845"),
         body: body.ToString(),
         client: client);

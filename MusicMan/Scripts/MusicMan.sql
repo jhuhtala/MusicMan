@@ -50,6 +50,7 @@ Create Table BillingDetail
 	IsPaid bit,
 	BilledDate datetime,
 	PaidDate datetime,
+    BillMonth datetime,
 	CONSTRAINT FK_PersonBillingDetail FOREIGN KEY (PersonID)
     REFERENCES Person(PersonID)
 )

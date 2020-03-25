@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange6 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange7 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange8 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange9 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+      System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange10 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
@@ -55,6 +55,10 @@
       this.btnEditStudent = new System.Windows.Forms.Button();
       this.grdStudents = new System.Windows.Forms.DataGridView();
       this.tabPage5 = new System.Windows.Forms.TabPage();
+      this.txtTwilioAuthKey = new System.Windows.Forms.TextBox();
+      this.txtTwilioSID = new System.Windows.Forms.TextBox();
+      this.label6 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
       this.btnSave = new System.Windows.Forms.Button();
       this.btnChangePass = new System.Windows.Forms.Button();
       this.txtVenmo = new System.Windows.Forms.TextBox();
@@ -65,10 +69,6 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
-      this.label6 = new System.Windows.Forms.Label();
-      this.txtTwilioSID = new System.Windows.Forms.TextBox();
-      this.txtTwilioAuthKey = new System.Windows.Forms.TextBox();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
@@ -116,27 +116,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
-      calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
-      calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
-      calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
-      calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
-      calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
-      calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
-      calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
-      calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
-      calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
-      calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
-      calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
-      calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
-      calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
-      calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
-      calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
+      calendarHighlightRange6.DayOfWeek = System.DayOfWeek.Monday;
+      calendarHighlightRange6.EndTime = System.TimeSpan.Parse("17:00:00");
+      calendarHighlightRange6.StartTime = System.TimeSpan.Parse("08:00:00");
+      calendarHighlightRange7.DayOfWeek = System.DayOfWeek.Tuesday;
+      calendarHighlightRange7.EndTime = System.TimeSpan.Parse("17:00:00");
+      calendarHighlightRange7.StartTime = System.TimeSpan.Parse("08:00:00");
+      calendarHighlightRange8.DayOfWeek = System.DayOfWeek.Wednesday;
+      calendarHighlightRange8.EndTime = System.TimeSpan.Parse("17:00:00");
+      calendarHighlightRange8.StartTime = System.TimeSpan.Parse("08:00:00");
+      calendarHighlightRange9.DayOfWeek = System.DayOfWeek.Thursday;
+      calendarHighlightRange9.EndTime = System.TimeSpan.Parse("17:00:00");
+      calendarHighlightRange9.StartTime = System.TimeSpan.Parse("08:00:00");
+      calendarHighlightRange10.DayOfWeek = System.DayOfWeek.Friday;
+      calendarHighlightRange10.EndTime = System.TimeSpan.Parse("17:00:00");
+      calendarHighlightRange10.StartTime = System.TimeSpan.Parse("08:00:00");
       this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
-        calendarHighlightRange1,
-        calendarHighlightRange2,
-        calendarHighlightRange3,
-        calendarHighlightRange4,
-        calendarHighlightRange5};
+        calendarHighlightRange6,
+        calendarHighlightRange7,
+        calendarHighlightRange8,
+        calendarHighlightRange9,
+        calendarHighlightRange10};
       this.calendar1.Location = new System.Drawing.Point(715, 14);
       this.calendar1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.calendar1.Name = "calendar1";
@@ -410,6 +410,38 @@
       this.tabPage5.Text = "Config";
       this.tabPage5.UseVisualStyleBackColor = true;
       // 
+      // txtTwilioAuthKey
+      // 
+      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 469);
+      this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
+      this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioAuthKey.TabIndex = 13;
+      // 
+      // txtTwilioSID
+      // 
+      this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
+      this.txtTwilioSID.Name = "txtTwilioSID";
+      this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioSID.TabIndex = 12;
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(85, 472);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(219, 32);
+      this.label6.TabIndex = 11;
+      this.label6.Text = "Twilio Auth Key:";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(157, 403);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(150, 32);
+      this.label5.TabIndex = 10;
+      this.label5.Text = "Twilio SID:";
+      // 
       // btnSave
       // 
       this.btnSave.Location = new System.Drawing.Point(609, 611);
@@ -422,9 +454,9 @@
       // 
       // btnChangePass
       // 
-      this.btnChangePass.Location = new System.Drawing.Point(318, 611);
+      this.btnChangePass.Location = new System.Drawing.Point(274, 611);
       this.btnChangePass.Name = "btnChangePass";
-      this.btnChangePass.Size = new System.Drawing.Size(265, 60);
+      this.btnChangePass.Size = new System.Drawing.Size(309, 60);
       this.btnChangePass.TabIndex = 8;
       this.btnChangePass.Text = "Change Password";
       this.btnChangePass.UseVisualStyleBackColor = true;
@@ -494,38 +526,6 @@
       this.label1.TabIndex = 0;
       this.label1.Text = "Email:";
       // 
-      // label5
-      // 
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(157, 403);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(150, 32);
-      this.label5.TabIndex = 10;
-      this.label5.Text = "Twilio SID:";
-      // 
-      // label6
-      // 
-      this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(85, 472);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(219, 32);
-      this.label6.TabIndex = 11;
-      this.label6.Text = "Twilio Auth Key:";
-      // 
-      // txtTwilioSID
-      // 
-      this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
-      this.txtTwilioSID.Name = "txtTwilioSID";
-      this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
-      this.txtTwilioSID.TabIndex = 12;
-      // 
-      // txtTwilioAuthKey
-      // 
-      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 469);
-      this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
-      this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
-      this.txtTwilioAuthKey.TabIndex = 13;
-      // 
       // Main
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -534,6 +534,7 @@
       this.Controls.Add(this.tabControl1);
       this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.Name = "Main";
+      this.ShowIcon = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "MusicMan";
       this.Load += new System.EventHandler(this.Main_Load);

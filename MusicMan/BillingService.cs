@@ -15,7 +15,7 @@ namespace MusicMan
 
   public static void CreateInvoices()
     {
-      var date = DateTime.Now;
+      var date = DateTime.Now.AddMonths(-1);
       var fromDate = new DateTime(date.Year, date.Month, 1);
       var toDate = fromDate.AddMonths(1);
 
@@ -28,7 +28,7 @@ namespace MusicMan
         var parentId = parent.PersonID;
         var billCount = context.BillingDetails
           .Count(x => x.PersonID == parentId &&
-                      x.BilledDate >= fromDate && x.BilledDate < toDate);
+                      x.BillMonth >= fromDate && x.BillMonth < toDate);
 
         if (billCount == 0)
         {
@@ -50,7 +50,7 @@ namespace MusicMan
 
               total += numLessons * student.Rate.Value;
             }
-            if (total > 0) CreateBillingEntry(parentId, total);
+            if (total > 0) CreateBillingEntry(parentId, total, fromDate);
           }
         }
       }
@@ -76,7 +76,7 @@ namespace MusicMan
     /// <summary>Creates the billing entry.</summary>
     /// <param name="parentId">The parent identifier.</param>
     /// <param name="total">The total.</param>
-    private static void CreateBillingEntry(int parentId, int total)
+    private static void CreateBillingEntry(int parentId, int total, DateTime fromDate)
     {
       using (var db = new MusicManEntities())
       {
@@ -86,7 +86,8 @@ namespace MusicMan
           BilledDate = DateTime.Today,
           Amount = total,
           IsInvoiced = false,
-          IsPaid = false
+          IsPaid = false,
+          BillMonth = fromDate
         };
 
         db.BillingDetails.Add(bill);
@@ -105,9 +106,9 @@ namespace MusicMan
       {
         var billingEntries = from p in db.People
           join b in db.BillingDetails on p.PersonID equals b.PersonID
-          orderby b.BilledDate
-          where p.PersonID == parentId && b.BilledDate >= start && b.BilledDate <= end
-          select new {b.BillingDetailID, b.BilledDate, b.Amount, b.IsInvoiced, b.IsPaid};
+          orderby b.BillMonth
+          where p.PersonID == parentId && b.BillMonth >= start && b.BillMonth <= end
+          select new {b.BillingDetailID, b.BillMonth, b.Amount, b.IsInvoiced, b.IsPaid};
 
         return billingEntries.ToList();
       }
@@ -139,7 +140,7 @@ namespace MusicMan
         {
           if (unsentInvoice.Person.InvoiceDay <= DateTime.Today.Day) 
           {
-            SendInvoice(unsentInvoice);
+            SendInvoice(unsentInvoice, unsentInvoice.Person.Phone);
           }
 
           unsentInvoice.IsInvoiced = true;
@@ -150,16 +151,16 @@ namespace MusicMan
 
     }
 
-    private static void SendInvoice(BillingDetail invoice)
+    private static void SendInvoice(BillingDetail invoice, string phone)
     {
       var body = BuildBody(invoice);
       
-      MessageService.SendMessage(body);
+      MessageService.SendMessage(body, "+1"+phone);
     }
 
     private static string BuildBody(BillingDetail invoice)
     {
-      var month = invoice.BilledDate.Value.ToString("MMMM");
+      var month = invoice.BillMonth.Value.ToString("MMMM");
       var user = User.GetDefaultUser();
 
       var body = new StringBuilder();

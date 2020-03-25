@@ -16,6 +16,7 @@
           <Property Name="BilledDate" Type="datetime" />
           <Property Name="PaidDate" Type="datetime" />
           <Property Name="IsInvoiced" Type="bit" />
+          <Property Name="BillMonth" Type="datetime" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -177,6 +178,7 @@
           <Property Name="PaidDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Person" Relationship="Self.FK_PersonBillingDetail" FromRole="BillingDetail" ToRole="Person" />
           <Property Name="IsInvoiced" Type="Boolean" />
+          <Property Name="BillMonth" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -340,6 +342,7 @@
           <EntitySetMapping Name="BillingDetails">
             <EntityTypeMapping TypeName="MusicManModel.BillingDetail">
               <MappingFragment StoreEntitySet="BillingDetail">
+                <ScalarProperty Name="BillMonth" ColumnName="BillMonth" />
                 <ScalarProperty Name="IsInvoiced" ColumnName="IsInvoiced" />
                 <ScalarProperty Name="BillingDetailID" ColumnName="BillingDetailID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />

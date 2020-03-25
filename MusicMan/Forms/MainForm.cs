@@ -29,9 +29,6 @@ namespace MusicMan
 
     private void LoadUserConfig()
     {
-
-
-
       var user = User.GetDefaultUser();
 
       //if (user == null)
@@ -136,10 +133,7 @@ namespace MusicMan
     /// <summary>Loads the billing grid.</summary>
     private void LoadBillingGrid()
     {
-      //Store previously selected row
-      //var selected = 0;
-      //if (grdBilling.RowCount > 0) selected = grdBilling.SelectedCells[0].RowIndex;
-
+      
       if (!(lstBillParents.SelectedItem is Person selectedPerson)) return;
 
       //Get list of billing entries related to the parent
@@ -159,8 +153,6 @@ namespace MusicMan
       grdBilling.Columns[3].HeaderCell.Value = "Invoiced";
       grdBilling.Columns[4].HeaderCell.Value = "Paid";
 
-      //Restore selected row
-      //if (selected != 0) grdBilling.Rows[selected].Selected = true;
     }
 
     private void monthView1_SelectionChanged(object sender, EventArgs e)

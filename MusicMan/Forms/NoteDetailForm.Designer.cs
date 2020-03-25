@@ -37,7 +37,7 @@
       // 
       this.btnSave.Location = new System.Drawing.Point(890, 543);
       this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(175, 72);
+      this.btnSave.Size = new System.Drawing.Size(175, 50);
       this.btnSave.TabIndex = 0;
       this.btnSave.Text = "Save";
       this.btnSave.UseVisualStyleBackColor = true;
@@ -45,9 +45,9 @@
       // 
       // btnCancel
       // 
-      this.btnCancel.Location = new System.Drawing.Point(666, 543);
+      this.btnCancel.Location = new System.Drawing.Point(693, 543);
       this.btnCancel.Name = "btnCancel";
-      this.btnCancel.Size = new System.Drawing.Size(175, 75);
+      this.btnCancel.Size = new System.Drawing.Size(175, 50);
       this.btnCancel.TabIndex = 1;
       this.btnCancel.Text = "Cancel";
       this.btnCancel.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1099, 649);
+      this.ClientSize = new System.Drawing.Size(1099, 609);
       this.Controls.Add(this.txtNote);
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.btnSave);
@@ -75,7 +75,7 @@
       this.Name = "NoteDetailForm";
       this.ShowIcon = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-      this.Text = "NoteDetailForm";
+      this.Text = "Note Detail";
       this.ResumeLayout(false);
 
     }

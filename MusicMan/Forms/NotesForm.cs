@@ -84,5 +84,36 @@ namespace MusicMan.Forms
     {
       cmdEdit_Click(null,null);
     }
+
+    private void btnSendNotes_Click(object sender, EventArgs e)
+    {
+      using (var db = new MusicManEntities())
+      {
+        var notes = db.Notes.Where(x => x.PersonID == PersonKey);
+        var noteList = notes.ToList();
+        foreach (var note in noteList)
+        {
+          var parent = note.Person.GetParent();
+          if (note.IsSent != null && !note.IsSent.Value)
+          {
+            var user = User.GetDefaultUser();
+            var message = new StringBuilder();
+            message.Append("Note from ");
+            message.Append(user.CompanyName);
+            message.Append(" for ");
+            message.Append(note.Person.FirstName);
+            message.Append(": ");
+            message.Append(note.Note1);
+
+            MessageService.SendMessage(message.ToString(), "+1"+parent.Phone);
+          }
+
+          note.IsSent = true;
+        }
+
+        db.SaveChanges();
+      }
+      LoadNotesGrid();
+    }
   }
 }
