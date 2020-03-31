@@ -66,7 +66,19 @@ namespace MusicMan
         return parents.ToList();
       }
     }
-    
+
+    //Static methods
+    /// <summary>Gets all parents.</summary>
+    /// <returns></returns>
+    public static List<Person> GetActiveStudents()
+    {
+      using (var db = new MusicManEntities())
+      {
+        var parents = db.People.Where(x => x.IsParent == false);
+        return parents.ToList();
+      }
+    }
+
     /// <summary>Gets the parent grid list.</summary>
     /// <returns></returns>
     public static object GetParentGridList()

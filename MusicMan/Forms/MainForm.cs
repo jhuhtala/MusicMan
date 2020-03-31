@@ -162,18 +162,26 @@ namespace MusicMan
 
     private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
     {
+      var start = monthView1.SelectionStart;
+      var end = monthView1.SelectionEnd;
 
-      var span = new TimeSpan(0, 0, 30, 0, 0);
+      foreach (var student in Person.GetActiveStudents())
+      {
+        var schedule = Schedule.GetScheduleFromStudentId(student.PersonID);
+        var dayOfWeek = (DayOfWeek)schedule.DayOfTheWeek;
+        var scheduleDays = Schedule.GetDayofWeekDatesBetween(start, end, dayOfWeek);
+        var timeSpan = schedule.TimeOfDay.Value;
 
-      var calendarItem = new CalendarItem(calendar1, DateTime.Now, span,"Test");
+        foreach (var scheduleDay in scheduleDays)
+        {
+          var span = new TimeSpan(0, 0, 30, 0, 0);
 
-      //foreach (CalendarItem item in loadedItems)
-      //{
-        calendar1.Items.Add(calendarItem);
-      //}
+          var dt = scheduleDay.Date + timeSpan;
 
-      //Or even better....
-      //calendar1.Items.AddRange(loadedItems);
+          var calendarItem = new CalendarItem(calendar1, dt, span, student.FirstLast);
+          calendar1.Items.Add(calendarItem);
+        }
+      }
     }
 
     /// <summary>Handles the Click event of the btnEditParent control.</summary>
