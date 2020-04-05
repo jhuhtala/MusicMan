@@ -16,6 +16,7 @@
           <Property Name="BilledDate" Type="datetime" />
           <Property Name="PaidDate" Type="datetime" />
           <Property Name="IsInvoiced" Type="bit" />
+          <Property Name="BillMonth" Type="datetime" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -25,6 +26,7 @@
           <Property Name="PersonID" Type="int" />
           <Property Name="Date" Type="datetime" />
           <Property Name="Note" Type="varchar(max)" />
+          <Property Name="IsSent" Type="bit" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -65,10 +67,12 @@
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="PasswordHash" Type="binary" MaxLength="64" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="CompanyName" Type="varchar" MaxLength="50" />
           <Property Name="PayPalEmail" Type="varchar" MaxLength="50" />
           <Property Name="VenmoUser" Type="varchar" MaxLength="50" />
+          <Property Name="TwilioAccountSid" Type="varchar" MaxLength="50" />
+          <Property Name="TwilioAuthToken" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_ChildRelationship">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
@@ -174,6 +178,7 @@
           <Property Name="PaidDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Person" Relationship="Self.FK_PersonBillingDetail" FromRole="BillingDetail" ToRole="Person" />
           <Property Name="IsInvoiced" Type="Boolean" />
+          <Property Name="BillMonth" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -184,6 +189,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_PersonNote" FromRole="Note" ToRole="Person" />
+          <Property Name="IsSent" Type="Boolean" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -232,10 +238,12 @@
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PasswordHash" Type="Binary" MaxLength="64" FixedLength="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" FixedLength="false" MaxLength="65" Unicode="false" />
           <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PayPalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VenmoUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TwilioAccountSid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TwilioAuthToken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_PersonBillingDetail">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
@@ -334,6 +342,7 @@
           <EntitySetMapping Name="BillingDetails">
             <EntityTypeMapping TypeName="MusicManModel.BillingDetail">
               <MappingFragment StoreEntitySet="BillingDetail">
+                <ScalarProperty Name="BillMonth" ColumnName="BillMonth" />
                 <ScalarProperty Name="IsInvoiced" ColumnName="IsInvoiced" />
                 <ScalarProperty Name="BillingDetailID" ColumnName="BillingDetailID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
@@ -347,6 +356,7 @@
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="MusicManModel.Note">
               <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
                 <ScalarProperty Name="NoteID" ColumnName="NoteID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -393,6 +403,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MusicManModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TwilioAuthToken" ColumnName="TwilioAuthToken" />
+                <ScalarProperty Name="TwilioAccountSid" ColumnName="TwilioAccountSid" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />

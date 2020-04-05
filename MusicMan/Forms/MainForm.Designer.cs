@@ -55,6 +55,20 @@
       this.btnEditStudent = new System.Windows.Forms.Button();
       this.grdStudents = new System.Windows.Forms.DataGridView();
       this.tabPage5 = new System.Windows.Forms.TabPage();
+      this.txtTwilioAuthKey = new System.Windows.Forms.TextBox();
+      this.txtTwilioSID = new System.Windows.Forms.TextBox();
+      this.label6 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.btnSave = new System.Windows.Forms.Button();
+      this.btnChangePass = new System.Windows.Forms.Button();
+      this.txtVenmo = new System.Windows.Forms.TextBox();
+      this.txtPayPalEmail = new System.Windows.Forms.TextBox();
+      this.txtBizName = new System.Windows.Forms.TextBox();
+      this.txtEmail = new System.Windows.Forms.TextBox();
+      this.label4 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.label2 = new System.Windows.Forms.Label();
+      this.label1 = new System.Windows.Forms.Label();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
@@ -63,6 +77,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.grdParents)).BeginInit();
       this.tabPage4.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.grdStudents)).BeginInit();
+      this.tabPage5.SuspendLayout();
       this.SuspendLayout();
       // 
       // tabControl1
@@ -179,7 +194,7 @@
       this.btnSendInvoices.Location = new System.Drawing.Point(1737, 376);
       this.btnSendInvoices.Name = "btnSendInvoices";
       this.btnSendInvoices.Size = new System.Drawing.Size(367, 71);
-      this.btnSendInvoices.TabIndex = 8;
+      this.btnSendInvoices.TabIndex = 6;
       this.btnSendInvoices.Text = "Send Invoices";
       this.btnSendInvoices.UseVisualStyleBackColor = true;
       this.btnSendInvoices.Click += new System.EventHandler(this.btnSendInvoices_Click);
@@ -199,7 +214,7 @@
       this.btnEditInvoice.Location = new System.Drawing.Point(1737, 150);
       this.btnEditInvoice.Name = "btnEditInvoice";
       this.btnEditInvoice.Size = new System.Drawing.Size(367, 71);
-      this.btnEditInvoice.TabIndex = 6;
+      this.btnEditInvoice.TabIndex = 4;
       this.btnEditInvoice.Text = "Adjust Amount";
       this.btnEditInvoice.UseVisualStyleBackColor = true;
       this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
@@ -221,7 +236,7 @@
       this.dtTo.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.dtTo.Name = "dtTo";
       this.dtTo.Size = new System.Drawing.Size(297, 38);
-      this.dtTo.TabIndex = 4;
+      this.dtTo.TabIndex = 2;
       this.dtTo.ValueChanged += new System.EventHandler(this.dtToOrFrom_ValueChanged);
       // 
       // dtFrom
@@ -231,7 +246,7 @@
       this.dtFrom.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.dtFrom.Name = "dtFrom";
       this.dtFrom.Size = new System.Drawing.Size(279, 38);
-      this.dtFrom.TabIndex = 2;
+      this.dtFrom.TabIndex = 1;
       this.dtFrom.ValueChanged += new System.EventHandler(this.dtToOrFrom_ValueChanged);
       // 
       // grdBilling
@@ -244,7 +259,7 @@
       this.grdBilling.RowHeadersVisible = false;
       this.grdBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.grdBilling.Size = new System.Drawing.Size(1088, 982);
-      this.grdBilling.TabIndex = 1;
+      this.grdBilling.TabIndex = 3;
       this.grdBilling.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdBilling_CellDoubleClick);
       // 
       // lstBillParents
@@ -372,6 +387,20 @@
       // 
       // tabPage5
       // 
+      this.tabPage5.Controls.Add(this.txtTwilioAuthKey);
+      this.tabPage5.Controls.Add(this.txtTwilioSID);
+      this.tabPage5.Controls.Add(this.label6);
+      this.tabPage5.Controls.Add(this.label5);
+      this.tabPage5.Controls.Add(this.btnSave);
+      this.tabPage5.Controls.Add(this.btnChangePass);
+      this.tabPage5.Controls.Add(this.txtVenmo);
+      this.tabPage5.Controls.Add(this.txtPayPalEmail);
+      this.tabPage5.Controls.Add(this.txtBizName);
+      this.tabPage5.Controls.Add(this.txtEmail);
+      this.tabPage5.Controls.Add(this.label4);
+      this.tabPage5.Controls.Add(this.label3);
+      this.tabPage5.Controls.Add(this.label2);
+      this.tabPage5.Controls.Add(this.label1);
       this.tabPage5.Location = new System.Drawing.Point(10, 48);
       this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.tabPage5.Name = "tabPage5";
@@ -381,6 +410,122 @@
       this.tabPage5.Text = "Config";
       this.tabPage5.UseVisualStyleBackColor = true;
       // 
+      // txtTwilioAuthKey
+      // 
+      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 469);
+      this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
+      this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioAuthKey.TabIndex = 13;
+      // 
+      // txtTwilioSID
+      // 
+      this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
+      this.txtTwilioSID.Name = "txtTwilioSID";
+      this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioSID.TabIndex = 12;
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(85, 472);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(219, 32);
+      this.label6.TabIndex = 11;
+      this.label6.Text = "Twilio Auth Key:";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(157, 403);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(150, 32);
+      this.label5.TabIndex = 10;
+      this.label5.Text = "Twilio SID:";
+      // 
+      // btnSave
+      // 
+      this.btnSave.Location = new System.Drawing.Point(609, 611);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(126, 60);
+      this.btnSave.TabIndex = 9;
+      this.btnSave.Text = "Save";
+      this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      // 
+      // btnChangePass
+      // 
+      this.btnChangePass.Location = new System.Drawing.Point(274, 611);
+      this.btnChangePass.Name = "btnChangePass";
+      this.btnChangePass.Size = new System.Drawing.Size(309, 60);
+      this.btnChangePass.TabIndex = 8;
+      this.btnChangePass.Text = "Change Password";
+      this.btnChangePass.UseVisualStyleBackColor = true;
+      this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
+      // 
+      // txtVenmo
+      // 
+      this.txtVenmo.Location = new System.Drawing.Point(318, 327);
+      this.txtVenmo.Name = "txtVenmo";
+      this.txtVenmo.Size = new System.Drawing.Size(417, 38);
+      this.txtVenmo.TabIndex = 7;
+      // 
+      // txtPayPalEmail
+      // 
+      this.txtPayPalEmail.Location = new System.Drawing.Point(318, 248);
+      this.txtPayPalEmail.Name = "txtPayPalEmail";
+      this.txtPayPalEmail.Size = new System.Drawing.Size(417, 38);
+      this.txtPayPalEmail.TabIndex = 6;
+      // 
+      // txtBizName
+      // 
+      this.txtBizName.Location = new System.Drawing.Point(318, 169);
+      this.txtBizName.Name = "txtBizName";
+      this.txtBizName.Size = new System.Drawing.Size(417, 38);
+      this.txtBizName.TabIndex = 5;
+      // 
+      // txtEmail
+      // 
+      this.txtEmail.Location = new System.Drawing.Point(318, 90);
+      this.txtEmail.Name = "txtEmail";
+      this.txtEmail.Size = new System.Drawing.Size(417, 38);
+      this.txtEmail.TabIndex = 4;
+      // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(57, 330);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(250, 32);
+      this.label4.TabIndex = 3;
+      this.label4.Text = "Venmo Username:";
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(114, 251);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(193, 32);
+      this.label3.TabIndex = 2;
+      this.label3.Text = "PayPal Email:";
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(86, 172);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(221, 32);
+      this.label2.TabIndex = 1;
+      this.label2.Text = "Business Name:";
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(212, 93);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(95, 32);
+      this.label1.TabIndex = 0;
+      this.label1.Text = "Email:";
+      // 
       // Main
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -389,6 +534,7 @@
       this.Controls.Add(this.tabControl1);
       this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.Name = "Main";
+      this.ShowIcon = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "MusicMan";
       this.Load += new System.EventHandler(this.Main_Load);
@@ -400,6 +546,8 @@
       ((System.ComponentModel.ISupportInitialize)(this.grdParents)).EndInit();
       this.tabPage4.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.grdStudents)).EndInit();
+      this.tabPage5.ResumeLayout(false);
+      this.tabPage5.PerformLayout();
       this.ResumeLayout(false);
 
         }
@@ -428,5 +576,19 @@
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.Button btnMarkPaid;
     private System.Windows.Forms.Button btnSendInvoices;
+    private System.Windows.Forms.TextBox txtVenmo;
+    private System.Windows.Forms.TextBox txtPayPalEmail;
+    private System.Windows.Forms.TextBox txtBizName;
+    private System.Windows.Forms.TextBox txtEmail;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Button btnChangePass;
+    private System.Windows.Forms.Button btnSave;
+    private System.Windows.Forms.TextBox txtTwilioAuthKey;
+    private System.Windows.Forms.TextBox txtTwilioSID;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label label5;
   }
 }

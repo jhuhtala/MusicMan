@@ -16,9 +16,11 @@ namespace MusicMan
     {
         public int UserID { get; set; }
         public string Email { get; set; }
-        public byte[] PasswordHash { get; set; }
+        public string PasswordHash { get; set; }
         public string CompanyName { get; set; }
         public string PayPalEmail { get; set; }
         public string VenmoUser { get; set; }
+        public string TwilioAccountSid { get; set; }
+        public string TwilioAuthToken { get; set; }
     }
 }

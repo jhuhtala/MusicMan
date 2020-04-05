@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using MusicMan.Forms;
 
 
 namespace MusicMan
@@ -42,6 +43,9 @@ namespace MusicMan
       numRate.Visible = !IsParent;
       lblParent.Visible = !IsParent;
       cboParent.Visible = !IsParent;
+      lblLessonDay.Visible = !IsParent;
+      cboDayOfWeek.Visible = !IsParent;
+      dtTime.Visible = !IsParent;
     }
 
     /// <summary>Sets the initial form values.</summary>
@@ -90,12 +94,6 @@ namespace MusicMan
 
           _prevDate = dtTime.Value;
           
-          
-
-
-
-          
-
           LoadParentName(person);
         }
         
@@ -251,6 +249,12 @@ namespace MusicMan
 
         _prevDate = dtTime.Value;
       
+    }
+
+    private void btnNotes_Click(object sender, EventArgs e)
+    {
+      var m = new NotesForm(PersonKey);
+      m.ShowDialog();
     }
   }
 }

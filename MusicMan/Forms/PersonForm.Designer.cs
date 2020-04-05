@@ -48,10 +48,11 @@
       this.numRate = new System.Windows.Forms.NumericUpDown();
       this.lblParent = new System.Windows.Forms.Label();
       this.cboDayOfWeek = new System.Windows.Forms.ComboBox();
-      this.label5 = new System.Windows.Forms.Label();
+      this.lblLessonDay = new System.Windows.Forms.Label();
       this.cboParent = new System.Windows.Forms.ComboBox();
       this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
       this.dtTime = new System.Windows.Forms.DateTimePicker();
+      this.btnNotes = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.numInvoiceDay)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numRate)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -64,7 +65,7 @@
       this.chkActive.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.chkActive.Name = "chkActive";
       this.chkActive.Size = new System.Drawing.Size(131, 36);
-      this.chkActive.TabIndex = 0;
+      this.chkActive.TabIndex = 8;
       this.chkActive.Text = "Active";
       this.chkActive.UseVisualStyleBackColor = true;
       // 
@@ -75,7 +76,7 @@
       this.chkVenmo.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.chkVenmo.Name = "chkVenmo";
       this.chkVenmo.Size = new System.Drawing.Size(143, 36);
-      this.chkVenmo.TabIndex = 1;
+      this.chkVenmo.TabIndex = 9;
       this.chkVenmo.Text = "Venmo";
       this.chkVenmo.UseVisualStyleBackColor = true;
       // 
@@ -86,7 +87,7 @@
       this.chkPaypal.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.chkPaypal.Name = "chkPaypal";
       this.chkPaypal.Size = new System.Drawing.Size(141, 36);
-      this.chkPaypal.TabIndex = 2;
+      this.chkPaypal.TabIndex = 10;
       this.chkPaypal.Text = "Paypal";
       this.chkPaypal.UseVisualStyleBackColor = true;
       // 
@@ -96,7 +97,7 @@
       this.txtFirstName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.txtFirstName.Name = "txtFirstName";
       this.txtFirstName.Size = new System.Drawing.Size(353, 38);
-      this.txtFirstName.TabIndex = 3;
+      this.txtFirstName.TabIndex = 0;
       // 
       // txtLastName
       // 
@@ -104,7 +105,7 @@
       this.txtLastName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.txtLastName.Name = "txtLastName";
       this.txtLastName.Size = new System.Drawing.Size(353, 38);
-      this.txtLastName.TabIndex = 4;
+      this.txtLastName.TabIndex = 1;
       // 
       // txtEmail
       // 
@@ -112,7 +113,7 @@
       this.txtEmail.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.txtEmail.Name = "txtEmail";
       this.txtEmail.Size = new System.Drawing.Size(353, 38);
-      this.txtEmail.TabIndex = 5;
+      this.txtEmail.TabIndex = 2;
       // 
       // numInvoiceDay
       // 
@@ -130,7 +131,7 @@
             0});
       this.numInvoiceDay.Name = "numInvoiceDay";
       this.numInvoiceDay.Size = new System.Drawing.Size(115, 38);
-      this.numInvoiceDay.TabIndex = 7;
+      this.numInvoiceDay.TabIndex = 11;
       this.numInvoiceDay.Value = new decimal(new int[] {
             1,
             0,
@@ -193,7 +194,7 @@
       this.btnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(200, 55);
-      this.btnSave.TabIndex = 13;
+      this.btnSave.TabIndex = 14;
       this.btnSave.Text = "Save";
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -205,7 +206,7 @@
       this.btnCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(200, 55);
-      this.btnCancel.TabIndex = 14;
+      this.btnCancel.TabIndex = 13;
       this.btnCancel.Text = "Cancel";
       this.btnCancel.UseVisualStyleBackColor = true;
       this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -226,7 +227,7 @@
       this.txtPhone.Mask = "(999) 000-0000";
       this.txtPhone.Name = "txtPhone";
       this.txtPhone.Size = new System.Drawing.Size(232, 38);
-      this.txtPhone.TabIndex = 16;
+      this.txtPhone.TabIndex = 3;
       this.txtPhone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
       // 
       // numRate
@@ -234,7 +235,7 @@
       this.numRate.Location = new System.Drawing.Point(232, 325);
       this.numRate.Name = "numRate";
       this.numRate.Size = new System.Drawing.Size(96, 38);
-      this.numRate.TabIndex = 17;
+      this.numRate.TabIndex = 4;
       // 
       // lblParent
       // 
@@ -252,17 +253,17 @@
       this.cboDayOfWeek.FormattingEnabled = true;
       this.cboDayOfWeek.Location = new System.Drawing.Point(231, 452);
       this.cboDayOfWeek.Name = "cboDayOfWeek";
-      this.cboDayOfWeek.Size = new System.Drawing.Size(354, 39);
-      this.cboDayOfWeek.TabIndex = 20;
+      this.cboDayOfWeek.Size = new System.Drawing.Size(295, 39);
+      this.cboDayOfWeek.TabIndex = 6;
       // 
-      // label5
+      // lblLessonDay
       // 
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(44, 455);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(172, 32);
-      this.label5.TabIndex = 21;
-      this.label5.Text = "Lesson Day:";
+      this.lblLessonDay.AutoSize = true;
+      this.lblLessonDay.Location = new System.Drawing.Point(44, 455);
+      this.lblLessonDay.Name = "lblLessonDay";
+      this.lblLessonDay.Size = new System.Drawing.Size(172, 32);
+      this.lblLessonDay.TabIndex = 21;
+      this.lblLessonDay.Text = "Lesson Day:";
       // 
       // cboParent
       // 
@@ -271,7 +272,7 @@
       this.cboParent.Location = new System.Drawing.Point(232, 386);
       this.cboParent.Name = "cboParent";
       this.cboParent.Size = new System.Drawing.Size(353, 39);
-      this.cboParent.TabIndex = 24;
+      this.cboParent.TabIndex = 5;
       // 
       // errProvider
       // 
@@ -285,8 +286,18 @@
       this.dtTime.Name = "dtTime";
       this.dtTime.ShowUpDown = true;
       this.dtTime.Size = new System.Drawing.Size(200, 38);
-      this.dtTime.TabIndex = 25;
+      this.dtTime.TabIndex = 7;
       this.dtTime.ValueChanged += new System.EventHandler(this.dtTime_ValueChanged);
+      // 
+      // btnNotes
+      // 
+      this.btnNotes.Location = new System.Drawing.Point(840, 386);
+      this.btnNotes.Name = "btnNotes";
+      this.btnNotes.Size = new System.Drawing.Size(195, 61);
+      this.btnNotes.TabIndex = 12;
+      this.btnNotes.Text = "View Notes";
+      this.btnNotes.UseVisualStyleBackColor = true;
+      this.btnNotes.Click += new System.EventHandler(this.btnNotes_Click);
       // 
       // FrmPerson
       // 
@@ -294,9 +305,10 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(1128, 611);
+      this.Controls.Add(this.btnNotes);
       this.Controls.Add(this.dtTime);
       this.Controls.Add(this.cboParent);
-      this.Controls.Add(this.label5);
+      this.Controls.Add(this.lblLessonDay);
       this.Controls.Add(this.cboDayOfWeek);
       this.Controls.Add(this.lblParent);
       this.Controls.Add(this.numRate);
@@ -352,9 +364,10 @@
         private System.Windows.Forms.NumericUpDown numRate;
         private System.Windows.Forms.Label lblParent;
         private System.Windows.Forms.ComboBox cboDayOfWeek;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblLessonDay;
         private System.Windows.Forms.ComboBox cboParent;
         private System.Windows.Forms.ErrorProvider errProvider;
     private System.Windows.Forms.DateTimePicker dtTime;
+    private System.Windows.Forms.Button btnNotes;
   }
 }

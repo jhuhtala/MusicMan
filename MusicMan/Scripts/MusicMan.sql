@@ -19,7 +19,7 @@ Create table Users
 (
 	UserID int IDENTITY(1, 1) PRIMARY KEY,
 	Email varchar(50) ,
-	PasswordHash BINARY(64) NOT NULL,
+	PasswordHash varchar(65) NOT NULL,
 	CompanyName varchar(50) ,
 	PayPalEmail varchar(50) ,
 	VenmoUser varchar(50) ,
@@ -50,6 +50,7 @@ Create Table BillingDetail
 	IsPaid bit,
 	BilledDate datetime,
 	PaidDate datetime,
+    BillMonth datetime,
 	CONSTRAINT FK_PersonBillingDetail FOREIGN KEY (PersonID)
     REFERENCES Person(PersonID)
 )
@@ -71,6 +72,7 @@ Create Table Note
 	PersonID int,
 	Date DateTime,
 	Note varchar(max),
+    IsSent bit,
 	CONSTRAINT FK_PersonNote FOREIGN KEY (PersonID)
     REFERENCES Person(PersonID)
 )

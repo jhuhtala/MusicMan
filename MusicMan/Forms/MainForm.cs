@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.Calendar;
+using MusicMan.Forms;
 
 namespace MusicMan
 {
@@ -22,7 +24,46 @@ namespace MusicMan
       LoadParentGrid();
       LoadStudentGrid();
       LoadBillingGrid();
+      LoadUserConfig();
+    }
 
+    private void LoadUserConfig()
+    {
+      var user = User.GetDefaultUser();
+
+      //if (user == null)
+      //{
+      //  var m = new UserCreationForm();
+      //  m.ShowDialog();
+      //  user = User.GetDefaultUser();
+      //}
+      //else
+      //{
+      //  var m = new Login();
+      //  var result = m.ShowDialog();
+      //  if (result == DialogResult.OK)
+      //  {
+      //    user = m.user;
+      //  }
+      //  else
+      //  {
+      //    user = null;
+      //  }
+
+      //}
+
+      //if (user == null)
+      //{
+      //  Close();
+      //  return;
+      //}
+
+      txtEmail.Text = user.Email;
+      txtBizName.Text = user.CompanyName;
+      txtPayPalEmail.Text = user.PayPalEmail;
+      txtVenmo.Text = user.VenmoUser;
+      txtTwilioSID.Text = user.TwilioAccountSid;
+      txtTwilioAuthKey.Text = user.TwilioAuthToken;
     }
 
     /// <summary>Loads the bill parents list.</summary>
@@ -92,10 +133,7 @@ namespace MusicMan
     /// <summary>Loads the billing grid.</summary>
     private void LoadBillingGrid()
     {
-      //Store previously selected row
-      //var selected = 0;
-      //if (grdBilling.RowCount > 0) selected = grdBilling.SelectedCells[0].RowIndex;
-
+      
       if (!(lstBillParents.SelectedItem is Person selectedPerson)) return;
 
       //Get list of billing entries related to the parent
@@ -115,8 +153,6 @@ namespace MusicMan
       grdBilling.Columns[3].HeaderCell.Value = "Invoiced";
       grdBilling.Columns[4].HeaderCell.Value = "Paid";
 
-      //Restore selected row
-      //if (selected != 0) grdBilling.Rows[selected].Selected = true;
     }
 
     private void monthView1_SelectionChanged(object sender, EventArgs e)
@@ -126,18 +162,27 @@ namespace MusicMan
 
     private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
     {
+      var start = monthView1.SelectionStart;
+      var end = monthView1.SelectionEnd;
 
-      var span = new TimeSpan(0, 0, 30, 0, 0);
+      foreach (var student in Person.GetActiveStudents())
+      {
+        var schedule = Schedule.GetScheduleFromStudentId(student.PersonID);
+        var dayOfWeek = (DayOfWeek)schedule.DayOfTheWeek;
+        var scheduleDays = Schedule.GetDayofWeekDatesBetween(start, end, dayOfWeek);
+        var timeSpan = schedule.TimeOfDay.Value;
 
-      var calendarItem = new CalendarItem(calendar1, DateTime.Now, span,"Test");
+        foreach (var scheduleDay in scheduleDays)
+        {
+          var span = new TimeSpan(0, 0, 30, 0, 0);
 
-      //foreach (CalendarItem item in loadedItems)
-      //{
-        calendar1.Items.Add(calendarItem);
-      //}
+          var dt = scheduleDay.Date + timeSpan;
 
-      //Or even better....
-      //calendar1.Items.AddRange(loadedItems);
+          var calendarItem = new CalendarItem(calendar1, dt, span, student.FirstLast);
+          calendarItem.ApplyColor(Color.DarkTurquoise);
+          calendar1.Items.Add(calendarItem);
+        }
+      }
     }
 
     /// <summary>Handles the Click event of the btnEditParent control.</summary>
@@ -240,6 +285,19 @@ namespace MusicMan
     private void btnSendInvoices_Click(object sender, EventArgs e)
     {
       BillingService.SendInvoices();
+      MessageBox.Show(@"Invoices Sent");
+    }
+
+    private void btnChangePass_Click(object sender, EventArgs e)
+    {
+      var m = new ChangePassForm();
+      m.ShowDialog();
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text, txtTwilioSID.Text, txtTwilioAuthKey.Text);
+      MessageBox.Show("Changes Saved");
     }
   }
 }
