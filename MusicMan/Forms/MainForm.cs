@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.Calendar;
 using MusicMan.Forms;
@@ -24,7 +25,6 @@ namespace MusicMan
       LoadStudentGrid();
       LoadBillingGrid();
       LoadUserConfig();
-
     }
 
     private void LoadUserConfig()
@@ -179,6 +179,7 @@ namespace MusicMan
           var dt = scheduleDay.Date + timeSpan;
 
           var calendarItem = new CalendarItem(calendar1, dt, span, student.FirstLast);
+          calendarItem.ApplyColor(Color.DarkTurquoise);
           calendar1.Items.Add(calendarItem);
         }
       }

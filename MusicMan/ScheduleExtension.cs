@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms.Calendar;
 using System.Windows.Forms.VisualStyles;
 
@@ -35,18 +36,7 @@ namespace MusicMan
         return schedule;
       }
     }
-
-
-
-
     
-
-    
-
-
-
-
-
     public static List<DateTime> GetDayofWeekDatesBetween(DateTime startDate, DateTime endDate, DayOfWeek dayOfWeek)
     {
       List<DateTime> list = new List<DateTime>();
@@ -63,11 +53,6 @@ namespace MusicMan
 
       return list;
     }
-
-
-
-
-
 
     /// <summary>Updates the
     /// schedule from student identifier.  Creates a
@@ -90,7 +75,10 @@ namespace MusicMan
         var intDayOfWeek = (int)dayOfWeek;
 
         schedule.DayOfTheWeek = intDayOfWeek;
-        schedule.TimeOfDay = time;
+        
+        var timeWoSeconds = new TimeSpan(time.Hours, time.Minutes, 0);
+
+        schedule.TimeOfDay = timeWoSeconds;
 
         if (newSchedule)
         {
