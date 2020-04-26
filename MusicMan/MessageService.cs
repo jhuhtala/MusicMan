@@ -6,6 +6,9 @@ namespace MusicMan
 {
   public class MessageService
   {
+    /// <summary>Determines whether [is messaging setup].</summary>
+    /// <returns>
+    ///   <c>true</c> if [is messaging setup]; otherwise, <c>false</c>.</returns>
     public static bool IsMessagingSetup()
     {
       var user = User.GetDefaultUser();
@@ -13,6 +16,9 @@ namespace MusicMan
     }
 
 
+    /// <summary>Sends the message.</summary>
+    /// <param name="body">The body.</param>
+    /// <param name="toPhone">To phone.</param>
     public static void SendMessage(string body, string toPhone)
     {
       var user = User.GetDefaultUser();
@@ -23,7 +29,7 @@ namespace MusicMan
 
       MessageResource.Create(
         to: new PhoneNumber(toPhone),
-        from: new PhoneNumber("+"+ phoneFrom),
+        from: new PhoneNumber("+1"+ phoneFrom),
         body: body,
         client: client);
     }

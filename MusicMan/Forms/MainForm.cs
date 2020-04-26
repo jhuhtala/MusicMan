@@ -29,6 +29,7 @@ namespace MusicMan
       calendar1_LoadItems(null, null);
     }
 
+    /// <summary>Loads the user configuration.</summary>
     private void LoadUserConfig()
     {
       var user = User.GetDefaultUser();
@@ -150,20 +151,16 @@ namespace MusicMan
 
     }
 
+    /// <summary>Handles the SelectionChanged event of the monthView1 control.</summary>
     private void monthView1_SelectionChanged(object sender, EventArgs e)
     {
       calendar1.SetViewRange(monthView1.SelectionStart, monthView1.SelectionEnd);
     }
 
+    /// <summary>Handles the LoadItems event of the calendar1 control.</summary>
     private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
     {
-
       var start = monthView1.SelectionStart;
-      //if (start != DateTime.MinValue)
-      //{
-      //  start = start.AddDays(-7);
-      //}
-      //calendar1.Items.Clear();
       var end = monthView1.SelectionEnd;
 
       foreach (var student in Person.GetActiveStudents())
@@ -206,16 +203,19 @@ namespace MusicMan
       LoadParentGrid();
     }
 
+    /// <summary>Handles the CellDoubleClick event of the grdParents control.</summary>
     private void grdParents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       btnEditParent_Click(null, null);
     }
 
+    /// <summary>Handles the SelectedIndexChanged event of the lstBillParents control.</summary>
     private void lstBillParents_SelectedIndexChanged(object sender, EventArgs e)
     {
       LoadBillingGrid();
     }
 
+    /// <summary>Handles the Click event of the btnNewStudent control.</summary>
     private void btnNewStudent_Click(object sender, EventArgs e)
     {
       var m = new FrmPerson(0, false, true);
@@ -223,6 +223,7 @@ namespace MusicMan
       LoadStudentGrid();
     }
 
+    /// <summary>Handles the Click event of the btnEditStudent control.</summary>
     private void btnEditStudent_Click(object sender, EventArgs e)
     {
       var selectedRowIndex = grdStudents.SelectedCells[0].RowIndex;
@@ -234,16 +235,19 @@ namespace MusicMan
       LoadStudentGrid();
     }
 
+    /// <summary>Handles the CellDoubleClick event of the grdStudents control.</summary>
     private void grdStudents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       btnEditStudent_Click(null, null);
     }
 
+    /// <summary>Handles the ValueChanged event of the dtToOrFrom control.</summary>
     private void dtToOrFrom_ValueChanged(object sender, EventArgs e)
     {
       LoadBillingGrid();
     }
 
+    /// <summary>Handles the Click event of the btnInvoice control.</summary>
     private void btnInvoice_Click(object sender, EventArgs e)
     {
       BillingService.CreateInvoices();
@@ -251,6 +255,7 @@ namespace MusicMan
       LoadBillingGrid();
     }
 
+    /// <summary>Handles the Click event of the btnEditInvoice control.</summary>
     private void btnEditInvoice_Click(object sender, EventArgs e)
     {
       if (grdBilling.RowCount > 0)
@@ -266,11 +271,13 @@ namespace MusicMan
       }
     }
 
+    /// <summary>Handles the CellDoubleClick event of the grdBilling control.</summary>
     private void grdBilling_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       btnEditInvoice_Click(null, null);
     }
 
+    /// <summary>Handles the Click event of the btnMarkPaid control.</summary>
     private void btnMarkPaid_Click(object sender, EventArgs e)
     {
       var selectedRowIndex = grdBilling.SelectedCells[0].RowIndex;
@@ -283,6 +290,7 @@ namespace MusicMan
       LoadBillingGrid();
     }
 
+    /// <summary>Handles the Click event of the btnSendInvoices control.</summary>
     private void btnSendInvoices_Click(object sender, EventArgs e)
     {
       if (!MessageService.IsMessagingSetup())
@@ -294,52 +302,45 @@ namespace MusicMan
       MessageBox.Show(@"Invoices Sent");
     }
 
+    /// <summary>Handles the Click event of the btnChangePass control.</summary>
     private void btnChangePass_Click(object sender, EventArgs e)
     {
       var m = new ChangePassForm();
       m.ShowDialog();
     }
 
+    /// <summary>Handles the Click event of the btnSave control.</summary>
     private void btnSave_Click(object sender, EventArgs e)
     {
       User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text, txtTwilioSID.Text, txtTwilioAuthKey.Text, txtTwilioPhone.Text);
       MessageBox.Show("Changes Saved");
     }
 
-    private void label7_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
+    /// <summary>Handles the LinkClicked event of the linkLabel1 control.</summary>
     private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
       linkLabel1.LinkVisited = true;
-      //Call the Process.Start method to open the default browser
-      //with a URL:
       System.Diagnostics.Process.Start("https://www.twilio.com/");
-
     }
 
+    /// <summary>Handles the Click event of the btnPrint control.</summary>
     private void btnPrint_Click(object sender, EventArgs e)
     {
-      GridPrintDocument doc = new GridPrintDocument(this.grdBilling,
-        this.grdBilling.Font, true);
+      var doc = new GridPrintDocument(grdBilling,grdBilling.Font, true);
       doc.DocumentName = "Billing Report";
 
-      PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
-      printPreviewDialog.ClientSize = new Size(400, 300);
-      printPreviewDialog.Location = new Point(29, 29);
-      printPreviewDialog.Name = "Print Preview Dialog";
-      printPreviewDialog.UseAntiAlias = true;
-      printPreviewDialog.Document = doc;
+      var printPreviewDialog = new PrintPreviewDialog
+      {
+        ClientSize = new Size(400, 300),
+        Location = new Point(29, 29),
+        Name = "Print Preview Dialog",
+        UseAntiAlias = true,
+        Document = doc
+      };
       printPreviewDialog.ShowDialog();
       doc.Dispose();
       doc = null;
     }
+
   }
 }

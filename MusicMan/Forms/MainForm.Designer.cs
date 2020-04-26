@@ -38,6 +38,7 @@
       this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
       this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
       this.tabPage2 = new System.Windows.Forms.TabPage();
+      this.btnPrint = new System.Windows.Forms.Button();
       this.btnSendInvoices = new System.Windows.Forms.Button();
       this.btnMarkPaid = new System.Windows.Forms.Button();
       this.btnEditInvoice = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
-      this.btnPrint = new System.Windows.Forms.Button();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
@@ -196,6 +196,16 @@
       this.tabPage2.TabIndex = 1;
       this.tabPage2.Text = "Billing";
       this.tabPage2.UseVisualStyleBackColor = true;
+      // 
+      // btnPrint
+      // 
+      this.btnPrint.Location = new System.Drawing.Point(1737, 604);
+      this.btnPrint.Name = "btnPrint";
+      this.btnPrint.Size = new System.Drawing.Size(367, 71);
+      this.btnPrint.TabIndex = 8;
+      this.btnPrint.Text = "Print";
+      this.btnPrint.UseVisualStyleBackColor = true;
+      this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
       // 
       // btnSendInvoices
       // 
@@ -440,9 +450,10 @@
       this.label10.AutoSize = true;
       this.label10.Location = new System.Drawing.Point(840, 551);
       this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(503, 32);
+      this.label10.Size = new System.Drawing.Size(1162, 32);
       this.label10.TabIndex = 18;
-      this.label10.Text = "Enter each into the related boxes here.";
+      this.label10.Text = "Enter each into the related boxes here.  Please enter only the area code and phon" +
+    "e number\r\n";
       // 
       // label9
       // 
@@ -468,7 +479,6 @@
       this.txtTwilioPhone.Name = "txtTwilioPhone";
       this.txtTwilioPhone.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioPhone.TabIndex = 15;
-      this.txtTwilioPhone.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
       // 
       // label7
       // 
@@ -478,7 +488,6 @@
       this.label7.Size = new System.Drawing.Size(210, 32);
       this.label7.TabIndex = 14;
       this.label7.Text = "Twilio Phone #:";
-      this.label7.Click += new System.EventHandler(this.label7_Click);
       // 
       // txtTwilioAuthKey
       // 
@@ -595,16 +604,6 @@
       this.label1.Size = new System.Drawing.Size(95, 32);
       this.label1.TabIndex = 0;
       this.label1.Text = "Email:";
-      // 
-      // btnPrint
-      // 
-      this.btnPrint.Location = new System.Drawing.Point(1737, 604);
-      this.btnPrint.Name = "btnPrint";
-      this.btnPrint.Size = new System.Drawing.Size(367, 71);
-      this.btnPrint.TabIndex = 8;
-      this.btnPrint.Text = "Print";
-      this.btnPrint.UseVisualStyleBackColor = true;
-      this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
       // 
       // Main
       // 
