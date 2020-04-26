@@ -87,6 +87,11 @@ namespace MusicMan.Forms
 
     private void btnSendNotes_Click(object sender, EventArgs e)
     {
+      if (!MessageService.IsMessagingSetup())
+      {
+        MessageBox.Show(@"Twilio has not yet been setup. Please do so on the main screen config tab.");
+        return;
+      }
       using (var db = new MusicManEntities())
       {
         var notes = db.Notes.Where(x => x.PersonID == PersonKey);

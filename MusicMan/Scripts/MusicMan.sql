@@ -23,6 +23,9 @@ Create table Users
 	CompanyName varchar(50) ,
 	PayPalEmail varchar(50) ,
 	VenmoUser varchar(50) ,
+    TwilioAccountSid varchar(50) ,
+	TwilioAuthToken varchar(50) ,
+	TwilioPhoneNumber varchar(10) ,
 )
 
 

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.Calendar;
 using MusicMan.Forms;
+using GridPrintPreviewLib;
 
 namespace MusicMan
 {
@@ -25,38 +26,31 @@ namespace MusicMan
       LoadStudentGrid();
       LoadBillingGrid();
       LoadUserConfig();
+      calendar1_LoadItems(null, null);
     }
 
     private void LoadUserConfig()
     {
       var user = User.GetDefaultUser();
 
-      //if (user == null)
-      //{
-      //  var m = new UserCreationForm();
-      //  m.ShowDialog();
-      //  user = User.GetDefaultUser();
-      //}
-      //else
-      //{
-      //  var m = new Login();
-      //  var result = m.ShowDialog();
-      //  if (result == DialogResult.OK)
-      //  {
-      //    user = m.user;
-      //  }
-      //  else
-      //  {
-      //    user = null;
-      //  }
+      if (user == null)
+      {
+        var m = new UserCreationForm();
+        m.ShowDialog();
+        user = User.GetDefaultUser();
+      }
+      else
+      {
+        var m = new Login();
+        var result = m.ShowDialog();
+        user = result == DialogResult.OK ? m.user : null;
+      }
 
-      //}
-
-      //if (user == null)
-      //{
-      //  Close();
-      //  return;
-      //}
+      if (user == null)
+      {
+        Close();
+        return;
+      }
 
       txtEmail.Text = user.Email;
       txtBizName.Text = user.CompanyName;
@@ -64,6 +58,7 @@ namespace MusicMan
       txtVenmo.Text = user.VenmoUser;
       txtTwilioSID.Text = user.TwilioAccountSid;
       txtTwilioAuthKey.Text = user.TwilioAuthToken;
+      txtTwilioPhone.Text = user.TwilioPhoneNumber;
     }
 
     /// <summary>Loads the bill parents list.</summary>
@@ -162,7 +157,13 @@ namespace MusicMan
 
     private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
     {
+
       var start = monthView1.SelectionStart;
+      //if (start != DateTime.MinValue)
+      //{
+      //  start = start.AddDays(-7);
+      //}
+      //calendar1.Items.Clear();
       var end = monthView1.SelectionEnd;
 
       foreach (var student in Person.GetActiveStudents())
@@ -284,6 +285,11 @@ namespace MusicMan
 
     private void btnSendInvoices_Click(object sender, EventArgs e)
     {
+      if (!MessageService.IsMessagingSetup())
+      {
+        MessageBox.Show(@"Twilio has not yet been setup.  Please do so on the config tab.");
+        return;
+      }
       BillingService.SendInvoices();
       MessageBox.Show(@"Invoices Sent");
     }
@@ -296,8 +302,44 @@ namespace MusicMan
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text, txtTwilioSID.Text, txtTwilioAuthKey.Text);
+      User.UpdateUser(txtEmail.Text, txtBizName.Text, txtPayPalEmail.Text, txtVenmo.Text, txtTwilioSID.Text, txtTwilioAuthKey.Text, txtTwilioPhone.Text);
       MessageBox.Show("Changes Saved");
+    }
+
+    private void label7_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      linkLabel1.LinkVisited = true;
+      //Call the Process.Start method to open the default browser
+      //with a URL:
+      System.Diagnostics.Process.Start("https://www.twilio.com/");
+
+    }
+
+    private void btnPrint_Click(object sender, EventArgs e)
+    {
+      GridPrintDocument doc = new GridPrintDocument(this.grdBilling,
+        this.grdBilling.Font, true);
+      doc.DocumentName = "Billing Report";
+
+      PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+      printPreviewDialog.ClientSize = new Size(400, 300);
+      printPreviewDialog.Location = new Point(29, 29);
+      printPreviewDialog.Name = "Print Preview Dialog";
+      printPreviewDialog.UseAntiAlias = true;
+      printPreviewDialog.Document = doc;
+      printPreviewDialog.ShowDialog();
+      doc.Dispose();
+      doc = null;
     }
   }
 }
