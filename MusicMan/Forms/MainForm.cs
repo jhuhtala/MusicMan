@@ -167,7 +167,7 @@ namespace MusicMan
       {
         var schedule = Schedule.GetScheduleFromStudentId(student.PersonID);
         var dayOfWeek = (DayOfWeek)schedule.DayOfTheWeek;
-        var scheduleDays = Schedule.GetDayofWeekDatesBetween(start, end, dayOfWeek);
+        var scheduleDays = Schedule.GetDayOfWeekDatesBetween(start, end, dayOfWeek);
         var timeSpan = schedule.TimeOfDay.Value;
 
         foreach (var scheduleDay in scheduleDays)
@@ -300,6 +300,7 @@ namespace MusicMan
       }
       BillingService.SendInvoices();
       MessageBox.Show(@"Invoices Sent");
+      LoadBillingGrid();
     }
 
     /// <summary>Handles the Click event of the btnChangePass control.</summary>

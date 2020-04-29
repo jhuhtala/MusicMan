@@ -476,6 +476,7 @@
       // txtTwilioPhone
       // 
       this.txtTwilioPhone.Location = new System.Drawing.Point(318, 551);
+      this.txtTwilioPhone.MaxLength = 50;
       this.txtTwilioPhone.Name = "txtTwilioPhone";
       this.txtTwilioPhone.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioPhone.TabIndex = 15;
@@ -492,6 +493,7 @@
       // txtTwilioAuthKey
       // 
       this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 477);
+      this.txtTwilioAuthKey.MaxLength = 50;
       this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
       this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioAuthKey.TabIndex = 13;
@@ -499,6 +501,7 @@
       // txtTwilioSID
       // 
       this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
+      this.txtTwilioSID.MaxLength = 50;
       this.txtTwilioSID.Name = "txtTwilioSID";
       this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioSID.TabIndex = 12;
@@ -544,6 +547,7 @@
       // txtVenmo
       // 
       this.txtVenmo.Location = new System.Drawing.Point(318, 327);
+      this.txtVenmo.MaxLength = 50;
       this.txtVenmo.Name = "txtVenmo";
       this.txtVenmo.Size = new System.Drawing.Size(417, 38);
       this.txtVenmo.TabIndex = 7;
@@ -551,6 +555,7 @@
       // txtPayPalEmail
       // 
       this.txtPayPalEmail.Location = new System.Drawing.Point(318, 248);
+      this.txtPayPalEmail.MaxLength = 50;
       this.txtPayPalEmail.Name = "txtPayPalEmail";
       this.txtPayPalEmail.Size = new System.Drawing.Size(417, 38);
       this.txtPayPalEmail.TabIndex = 6;
@@ -558,6 +563,7 @@
       // txtBizName
       // 
       this.txtBizName.Location = new System.Drawing.Point(318, 169);
+      this.txtBizName.MaxLength = 50;
       this.txtBizName.Name = "txtBizName";
       this.txtBizName.Size = new System.Drawing.Size(417, 38);
       this.txtBizName.TabIndex = 5;
@@ -565,6 +571,7 @@
       // txtEmail
       // 
       this.txtEmail.Location = new System.Drawing.Point(318, 90);
+      this.txtEmail.MaxLength = 50;
       this.txtEmail.Name = "txtEmail";
       this.txtEmail.Size = new System.Drawing.Size(417, 38);
       this.txtEmail.TabIndex = 4;

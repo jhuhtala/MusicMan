@@ -13,16 +13,6 @@ namespace MusicMan
     /// <value>The first last.</value>
     public string FirstLast => FirstName + " " + LastName;
 
-
-    /// <summary>
-    ///   <para>
-    ///  Gets the person list.
-    /// </para>
-    /// </summary>
-    /// <value>The person list.</value>
-    public string PersonList => LastName + ", " + FirstName + " " + Phone + " " + Email +
-                                (IsPaypal.HasValue && IsPaypal.Value ? " PayPal" : " Venmo");
-
     /// <summary>Gets the parent from the current student.</summary>
     /// <returns></returns>
     public Person GetParent()
@@ -41,7 +31,6 @@ namespace MusicMan
         return null;
       }
     }    
-    
     
     /// <summary>Gets the person from primary key.</summary>
     /// <param name="personId">The person identifier.</param>

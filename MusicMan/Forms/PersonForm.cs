@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MusicMan.Forms;
 
@@ -27,7 +28,7 @@ namespace MusicMan
       SetVisibility();
     }
 
-    public int PersonKey { get; }
+    public int PersonKey { get; set; }
     public int ParentKey { get; set; }
     public bool IsParent { get; }
     public bool IsNew { get; }
@@ -98,13 +99,27 @@ namespace MusicMan
         }
         
       }
+      else
+      {
+        LoadParentName(null);
+        cboDayOfWeek.DataSource = Enum.GetNames(typeof(DayOfWeek));
+        dtTime.Value = DateTime.Today.AddHours(12);
+      }
+
+      
     }
 
     /// <summary>Loads the name of the parent.</summary>
     /// <param name="student">The student.</param>
     private void LoadParentName(Person student)
     {
-      var parent = student.GetParent();
+      Person parent = null;
+      if (student != null)
+      {
+        parent = student.GetParent();
+      }
+
+      
 
       var parents = Person.GetParents();
       cboParent.DisplayMember = "FirstLast";
@@ -147,9 +162,19 @@ namespace MusicMan
         person.IsVenmo = chkVenmo.Checked;
         person.IsPaypal = chkPaypal.Checked;
         person.IsParent = IsParent;
+        person.Rate = (int?) numRate.Value;
 
+        //Create a new person if a key was not passed in when the form was created.
+        if (PersonKey == 0) db.People.Add(person);
 
-        //Set values specific to a student
+        db.SaveChanges();
+        PersonKey = person.PersonID;
+      }
+
+      using (var db = new MusicManEntities())
+      {
+        var person = db.People.FirstOrDefault(x => x.PersonID == PersonKey);
+
         if (!IsParent)
         {
           if (cboParent.SelectedItem is Person selectedParent && ParentKey != selectedParent.PersonID)
@@ -160,26 +185,23 @@ namespace MusicMan
             }
             else
             {
-              var relationship = new Relationship {ChildID = PersonKey, ParentID = selectedParent.PersonID};
+              var relationship = new Relationship { ChildID = PersonKey, ParentID = selectedParent.PersonID };
               db.Relationships.Add(relationship);
             }
           }
-
-          person.Rate = (int?)numRate.Value;
-
+          
           Enum.TryParse<DayOfWeek>(cboDayOfWeek.SelectedValue.ToString(), out var dayOfWeek);
 
           Schedule.UpdateScheduleFromStudentId(person.PersonID, dayOfWeek, dtTime.Value.TimeOfDay);
         }
-
-        //Create a new person if a key was not passed in when the form was created.
-        if (PersonKey == 0) db.People.Add(person);
 
         db.SaveChanges();
       }
     }
 
 
+    /// <summary>Validates the save.  Will not allow the record to be saved if certain errors remain</summary>
+    /// <returns></returns>
     private bool ValidateSave()
     {
       errProvider.Clear();
@@ -227,34 +249,60 @@ namespace MusicMan
       Close();
     }
 
-
-
-
     private DateTime _prevDate;
     private bool _initialValue = false;
 
+    /// <summary>Handles the ValueChanged event of the dtTime control.  Used to force the time in 30 minute intervals</summary>
     private void dtTime_ValueChanged(object sender, EventArgs e)
     {
+      if (dtTime.Value == DateTime.MinValue)
+      {
+        dtTime.Value = DateTime.Today;
+      }
+
+      if (_prevDate == DateTime.MinValue)
+      {
+        _prevDate = DateTime.Today;
+      }
       
-        if (_initialValue)
-        {
-          _initialValue = false;
-          return;
-        }
+      if (_initialValue)
+      {
+        _initialValue = false;
+        return;
+      }
 
-        var dt = dtTime.Value;
-        var diff = dt - _prevDate;
+      var dt = dtTime.Value;
+      var diff = dt - _prevDate;
 
-        dtTime.Value = diff.Ticks < 0 ? _prevDate.AddMinutes(-30) : _prevDate.AddMinutes(30);
+      dtTime.Value = diff.Ticks < 0 ? _prevDate.AddMinutes(-30) : _prevDate.AddMinutes(30);
 
-        _prevDate = dtTime.Value;
-      
+      _prevDate = dtTime.Value;
     }
 
+    /// <summary>
+    ///   <para>
+    ///  Handles the Click event of the btnNotes control.  Launches the Notes form
+    /// </para>
+    /// </summary>
     private void btnNotes_Click(object sender, EventArgs e)
     {
       var m = new NotesForm(PersonKey);
       m.ShowDialog();
+    }
+
+    private void txtEmail_Leave(object sender, EventArgs e)
+    {
+      Regex mRegxExpression;
+      if (txtEmail.Text.Trim() != string.Empty)
+      {
+        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+        if (!mRegxExpression.IsMatch(txtEmail.Text.Trim()))
+        {
+          MessageBox.Show(@"E-mail address format is not correct.", @"Invalid Email Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          txtEmail.Focus();
+        }
+      }
     }
   }
 }

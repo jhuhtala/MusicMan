@@ -57,14 +57,17 @@
       // 
       this.txtEmail.Location = new System.Drawing.Point(248, 57);
       this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.txtEmail.MaxLength = 50;
       this.txtEmail.Name = "txtEmail";
       this.txtEmail.Size = new System.Drawing.Size(580, 38);
       this.txtEmail.TabIndex = 0;
+      this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
       // 
       // txtPass
       // 
       this.txtPass.Location = new System.Drawing.Point(248, 129);
       this.txtPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.txtPass.MaxLength = 50;
       this.txtPass.Name = "txtPass";
       this.txtPass.PasswordChar = '*';
       this.txtPass.Size = new System.Drawing.Size(580, 38);
