@@ -57,6 +57,7 @@
       this.txtNewPass.Size = new System.Drawing.Size(360, 38);
       this.txtNewPass.TabIndex = 1;
       this.txtNewPass.UseSystemPasswordChar = true;
+      this.txtNewPass.TextChanged += new System.EventHandler(this.txtNewPass_TextChanged);
       // 
       // txtNewPass2
       // 

@@ -1,11 +1,11 @@
-USE master;
-GO
-ALTER DATABASE MusicMan SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-GO
+--USE master;
+--GO
+--ALTER DATABASE MusicMan SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+--GO
 
-DROP DATABASE MusicMan;
+--DROP DATABASE MusicMan;
 
-GO
+--GO
 
 CREATE DATABASE MusicMan;
 
@@ -23,6 +23,9 @@ Create table Users
 	CompanyName varchar(50) ,
 	PayPalEmail varchar(50) ,
 	VenmoUser varchar(50) ,
+    TwilioAccountSid varchar(50) ,
+	TwilioAuthToken varchar(50) ,
+	TwilioPhoneNumber varchar(10) ,
 )
 
 

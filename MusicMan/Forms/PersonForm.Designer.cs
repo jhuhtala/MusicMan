@@ -95,6 +95,7 @@
       // 
       this.txtFirstName.Location = new System.Drawing.Point(232, 44);
       this.txtFirstName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+      this.txtFirstName.MaxLength = 50;
       this.txtFirstName.Name = "txtFirstName";
       this.txtFirstName.Size = new System.Drawing.Size(353, 38);
       this.txtFirstName.TabIndex = 0;
@@ -103,6 +104,7 @@
       // 
       this.txtLastName.Location = new System.Drawing.Point(232, 112);
       this.txtLastName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+      this.txtLastName.MaxLength = 50;
       this.txtLastName.Name = "txtLastName";
       this.txtLastName.Size = new System.Drawing.Size(353, 38);
       this.txtLastName.TabIndex = 1;
@@ -111,9 +113,11 @@
       // 
       this.txtEmail.Location = new System.Drawing.Point(232, 184);
       this.txtEmail.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+      this.txtEmail.MaxLength = 50;
       this.txtEmail.Name = "txtEmail";
       this.txtEmail.Size = new System.Drawing.Size(353, 38);
       this.txtEmail.TabIndex = 2;
+      this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
       // 
       // numInvoiceDay
       // 

@@ -38,6 +38,7 @@
       this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
       this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
       this.tabPage2 = new System.Windows.Forms.TabPage();
+      this.btnPrint = new System.Windows.Forms.Button();
       this.btnSendInvoices = new System.Windows.Forms.Button();
       this.btnMarkPaid = new System.Windows.Forms.Button();
       this.btnEditInvoice = new System.Windows.Forms.Button();
@@ -55,6 +56,12 @@
       this.btnEditStudent = new System.Windows.Forms.Button();
       this.grdStudents = new System.Windows.Forms.DataGridView();
       this.tabPage5 = new System.Windows.Forms.TabPage();
+      this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+      this.label10 = new System.Windows.Forms.Label();
+      this.label9 = new System.Windows.Forms.Label();
+      this.label8 = new System.Windows.Forms.Label();
+      this.txtTwilioPhone = new System.Windows.Forms.TextBox();
+      this.label7 = new System.Windows.Forms.Label();
       this.txtTwilioAuthKey = new System.Windows.Forms.TextBox();
       this.txtTwilioSID = new System.Windows.Forms.TextBox();
       this.label6 = new System.Windows.Forms.Label();
@@ -172,6 +179,7 @@
       // 
       // tabPage2
       // 
+      this.tabPage2.Controls.Add(this.btnPrint);
       this.tabPage2.Controls.Add(this.btnSendInvoices);
       this.tabPage2.Controls.Add(this.btnMarkPaid);
       this.tabPage2.Controls.Add(this.btnEditInvoice);
@@ -188,6 +196,16 @@
       this.tabPage2.TabIndex = 1;
       this.tabPage2.Text = "Billing";
       this.tabPage2.UseVisualStyleBackColor = true;
+      // 
+      // btnPrint
+      // 
+      this.btnPrint.Location = new System.Drawing.Point(1737, 604);
+      this.btnPrint.Name = "btnPrint";
+      this.btnPrint.Size = new System.Drawing.Size(367, 71);
+      this.btnPrint.TabIndex = 8;
+      this.btnPrint.Text = "Print";
+      this.btnPrint.UseVisualStyleBackColor = true;
+      this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
       // 
       // btnSendInvoices
       // 
@@ -387,6 +405,12 @@
       // 
       // tabPage5
       // 
+      this.tabPage5.Controls.Add(this.linkLabel1);
+      this.tabPage5.Controls.Add(this.label10);
+      this.tabPage5.Controls.Add(this.label9);
+      this.tabPage5.Controls.Add(this.label8);
+      this.tabPage5.Controls.Add(this.txtTwilioPhone);
+      this.tabPage5.Controls.Add(this.label7);
       this.tabPage5.Controls.Add(this.txtTwilioAuthKey);
       this.tabPage5.Controls.Add(this.txtTwilioSID);
       this.tabPage5.Controls.Add(this.label6);
@@ -410,9 +434,66 @@
       this.tabPage5.Text = "Config";
       this.tabPage5.UseVisualStyleBackColor = true;
       // 
+      // linkLabel1
+      // 
+      this.linkLabel1.AutoSize = true;
+      this.linkLabel1.Location = new System.Drawing.Point(840, 614);
+      this.linkLabel1.Name = "linkLabel1";
+      this.linkLabel1.Size = new System.Drawing.Size(150, 32);
+      this.linkLabel1.TabIndex = 19;
+      this.linkLabel1.TabStop = true;
+      this.linkLabel1.Text = "Twilio.com";
+      this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+      // 
+      // label10
+      // 
+      this.label10.AutoSize = true;
+      this.label10.Location = new System.Drawing.Point(840, 551);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(1162, 32);
+      this.label10.TabIndex = 18;
+      this.label10.Text = "Enter each into the related boxes here.  Please enter only the area code and phon" +
+    "e number\r\n";
+      // 
+      // label9
+      // 
+      this.label9.AutoSize = true;
+      this.label9.Location = new System.Drawing.Point(840, 480);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(774, 32);
+      this.label9.TabIndex = 17;
+      this.label9.Text = "Twilio will provide three values, SID, Auth Key and Phone #. ";
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Location = new System.Drawing.Point(840, 403);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(818, 32);
+      this.label8.TabIndex = 16;
+      this.label8.Text = "To setup Twilio, please go to twilio.com and create an account.  ";
+      // 
+      // txtTwilioPhone
+      // 
+      this.txtTwilioPhone.Location = new System.Drawing.Point(318, 551);
+      this.txtTwilioPhone.MaxLength = 50;
+      this.txtTwilioPhone.Name = "txtTwilioPhone";
+      this.txtTwilioPhone.Size = new System.Drawing.Size(417, 38);
+      this.txtTwilioPhone.TabIndex = 15;
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(94, 554);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(210, 32);
+      this.label7.TabIndex = 14;
+      this.label7.Text = "Twilio Phone #:";
+      // 
       // txtTwilioAuthKey
       // 
-      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 469);
+      this.txtTwilioAuthKey.Location = new System.Drawing.Point(318, 477);
+      this.txtTwilioAuthKey.MaxLength = 50;
       this.txtTwilioAuthKey.Name = "txtTwilioAuthKey";
       this.txtTwilioAuthKey.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioAuthKey.TabIndex = 13;
@@ -420,6 +501,7 @@
       // txtTwilioSID
       // 
       this.txtTwilioSID.Location = new System.Drawing.Point(318, 403);
+      this.txtTwilioSID.MaxLength = 50;
       this.txtTwilioSID.Name = "txtTwilioSID";
       this.txtTwilioSID.Size = new System.Drawing.Size(417, 38);
       this.txtTwilioSID.TabIndex = 12;
@@ -427,7 +509,7 @@
       // label6
       // 
       this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(85, 472);
+      this.label6.Location = new System.Drawing.Point(85, 480);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(219, 32);
       this.label6.TabIndex = 11;
@@ -444,7 +526,7 @@
       // 
       // btnSave
       // 
-      this.btnSave.Location = new System.Drawing.Point(609, 611);
+      this.btnSave.Location = new System.Drawing.Point(609, 629);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(126, 60);
       this.btnSave.TabIndex = 9;
@@ -454,7 +536,7 @@
       // 
       // btnChangePass
       // 
-      this.btnChangePass.Location = new System.Drawing.Point(274, 611);
+      this.btnChangePass.Location = new System.Drawing.Point(274, 629);
       this.btnChangePass.Name = "btnChangePass";
       this.btnChangePass.Size = new System.Drawing.Size(309, 60);
       this.btnChangePass.TabIndex = 8;
@@ -465,6 +547,7 @@
       // txtVenmo
       // 
       this.txtVenmo.Location = new System.Drawing.Point(318, 327);
+      this.txtVenmo.MaxLength = 50;
       this.txtVenmo.Name = "txtVenmo";
       this.txtVenmo.Size = new System.Drawing.Size(417, 38);
       this.txtVenmo.TabIndex = 7;
@@ -472,6 +555,7 @@
       // txtPayPalEmail
       // 
       this.txtPayPalEmail.Location = new System.Drawing.Point(318, 248);
+      this.txtPayPalEmail.MaxLength = 50;
       this.txtPayPalEmail.Name = "txtPayPalEmail";
       this.txtPayPalEmail.Size = new System.Drawing.Size(417, 38);
       this.txtPayPalEmail.TabIndex = 6;
@@ -479,6 +563,7 @@
       // txtBizName
       // 
       this.txtBizName.Location = new System.Drawing.Point(318, 169);
+      this.txtBizName.MaxLength = 50;
       this.txtBizName.Name = "txtBizName";
       this.txtBizName.Size = new System.Drawing.Size(417, 38);
       this.txtBizName.TabIndex = 5;
@@ -486,6 +571,7 @@
       // txtEmail
       // 
       this.txtEmail.Location = new System.Drawing.Point(318, 90);
+      this.txtEmail.MaxLength = 50;
       this.txtEmail.Name = "txtEmail";
       this.txtEmail.Size = new System.Drawing.Size(417, 38);
       this.txtEmail.TabIndex = 4;
@@ -590,5 +676,12 @@
     private System.Windows.Forms.TextBox txtTwilioSID;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.TextBox txtTwilioPhone;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.LinkLabel linkLabel1;
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label label9;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Button btnPrint;
   }
 }

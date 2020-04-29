@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MusicMan.Forms
@@ -14,6 +9,8 @@ namespace MusicMan.Forms
   {
 
 
+    /// <summary>Initializes a new instance of the <see cref="NotesForm" /> class.</summary>
+    /// <param name="personKey">The person key.</param>
     public NotesForm(int personKey)
     {
       InitializeComponent();
@@ -23,6 +20,11 @@ namespace MusicMan.Forms
 
     public int PersonKey { get; }
 
+    /// <summary>
+    ///   <para>
+    ///  Loads the notes grid.
+    /// </para>
+    /// </summary>
     private void LoadNotesGrid()
     {
       var noteList = Note.GetNoteGridList(PersonKey);
@@ -40,6 +42,8 @@ namespace MusicMan.Forms
 
     }
 
+    /// <summary>Handles the Click event of the cmdEdit control.</summary>
+
     private void cmdEdit_Click(object sender, EventArgs e)
     {
       if (grdNotes.RowCount > 0)
@@ -53,12 +57,11 @@ namespace MusicMan.Forms
         noteDetail.ShowDialog();
         LoadNotesGrid();
       }
-
-
-
-      
     }
 
+    /// <summary>Handles the Click event of the cmdNew control.</summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     private void cmdNew_Click(object sender, EventArgs e)
     {
       var noteDetail = new NoteDetailForm(PersonKey, 0);
@@ -66,6 +69,9 @@ namespace MusicMan.Forms
       LoadNotesGrid();
     }
 
+    /// <summary>Handles the Click event of the cmdDelete control.</summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     private void cmdDelete_Click(object sender, EventArgs e)
     {
       if (grdNotes.RowCount > 0)
@@ -80,13 +86,24 @@ namespace MusicMan.Forms
       }
     }
 
+    /// <summary>
+    ///   <para>
+    ///  Handles the CellDoubleClick event of the grdNotes control.  Causes selected item to be edited using already existing edit button click event
+    /// </para>
+    /// </summary>
     private void grdNotes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       cmdEdit_Click(null,null);
     }
 
+    /// <summary>Handles the Click event of the btnSendNotes control.  Sends notes to the parent of the current student and marks them as sent</summary>
     private void btnSendNotes_Click(object sender, EventArgs e)
     {
+      if (!MessageService.IsMessagingSetup())
+      {
+        MessageBox.Show(@"Twilio has not yet been setup. Please do so on the main screen config tab.");
+        return;
+      }
       using (var db = new MusicManEntities())
       {
         var notes = db.Notes.Where(x => x.PersonID == PersonKey);
@@ -94,6 +111,11 @@ namespace MusicMan.Forms
         foreach (var note in noteList)
         {
           var parent = note.Person.GetParent();
+          if (string.IsNullOrEmpty(parent.Phone))
+          {
+            MessageBox.Show(@"Parent's phone number has not been entered.  Please do so before attempting to send messages.");
+            return;
+          }
           if (note.IsSent != null && !note.IsSent.Value)
           {
             var user = User.GetDefaultUser();
@@ -110,6 +132,7 @@ namespace MusicMan.Forms
 
           note.IsSent = true;
         }
+        MessageBox.Show(@"Messages sent to parent.");
 
         db.SaveChanges();
       }

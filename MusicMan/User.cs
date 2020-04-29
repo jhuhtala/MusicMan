@@ -22,5 +22,6 @@ namespace MusicMan
         public string VenmoUser { get; set; }
         public string TwilioAccountSid { get; set; }
         public string TwilioAuthToken { get; set; }
+        public string TwilioPhoneNumber { get; set; }
     }
 }

@@ -36,16 +36,21 @@ namespace MusicMan
         return schedule;
       }
     }
-    
-    public static List<DateTime> GetDayofWeekDatesBetween(DateTime startDate, DateTime endDate, DayOfWeek dayOfWeek)
+
+    /// <summary>Gets the day of week dates between a start and end date.</summary>
+    /// <param name="startDate">The start date.</param>
+    /// <param name="endDate">The end date.</param>
+    /// <param name="dayOfWeek">The day of week.</param>
+    /// <returns></returns>
+    public static List<DateTime> GetDayOfWeekDatesBetween(DateTime startDate, DateTime endDate, DayOfWeek dayOfWeek)
     {
-      List<DateTime> list = new List<DateTime>();
+      var list = new List<DateTime>();
 
       // Total dates in given range. "+ 1" include endDate
-      double totalDates = (endDate.Date - startDate.Date).TotalDays + 1;
+      var totalDates = (endDate.Date - startDate.Date).TotalDays + 1;
 
       // Find first "dayOfWeek" date from startDate
-      int i = dayOfWeek - startDate.DayOfWeek;
+      var i = dayOfWeek - startDate.DayOfWeek;
       if (i < 0) i += 7;
 
       // Add all "dayOfWeek" dates in given range
@@ -54,8 +59,7 @@ namespace MusicMan
       return list;
     }
 
-    /// <summary>Updates the
-    /// schedule from student identifier.  Creates a
+    /// <summary>Updates the schedule from student identifier.  Creates a
     /// new schedule if one isn't found for the current student</summary>
     /// <param name="studentId">The student identifier.</param>
     /// <param name="dayOfWeek">The day of week.</param>
