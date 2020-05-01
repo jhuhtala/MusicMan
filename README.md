@@ -3,6 +3,10 @@ Created by Jason Huhtala
 MusicMan is a software for music lesson teaching professionals to use to manage their lesson schedule, 
 invoice, take notes and send lesson details and reminders to parents.  
 
+### MusicMan Demo Videos:
+
+https://github.com/jhuhtala/MusicMan/tree/master/docs
+
 ### Developer Setup Instructions
 
 There are only a couple steps required to make changes to MusicMan.  
